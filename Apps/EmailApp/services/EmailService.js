@@ -3,7 +3,12 @@ import { StorageService } from '../../../services/StorageService.js'
 
 export const EmailService = {
     query,
-    getEmailById
+    getEmailById,
+    deleteEmail,
+    updateIsRead,
+    add,
+    filterBy,
+    sortBy
 
 }
 
@@ -14,7 +19,7 @@ _getEmails()
 
 function _getEmails() {
     gEmails = StorageService.load(EMAIL_KEY)
-    if (!gEmails) {
+    if (!gEmails || !gEmails.length) {
         gEmails = [{
             subject: 'Wassap?',
             body: 'Pick up!',
@@ -71,6 +76,82 @@ function query() {
 }
 
 function getEmailById(emailId) {
-    var email = gEmails.find(email => email.id = emailId)
+    const email = gEmails.find(email => email.id === emailId)
     return Promise.resolve(emails)
 }
+
+
+function deleteEmail(emailId) {
+    console.log('email deleted:', emailId);
+    const idx = _getEmailIdxById(emailId)
+    let copy = [...gEmails]
+    copy.splice(idx, 1)
+    gEmails = copy
+    StorageService.save(EMAIL_KEY, gEmails)
+}
+
+function updateIsRead(emailId) {
+    const idx = _getEmailIdxById(emailId)
+    console.log(idx);
+    let copyEmails = [...gEmails]
+    copyEmails[idx].isRead = true
+    gEmails = copyEmails
+    StorageService.save(EMAIL_KEY, gEmails)
+
+}
+
+function add(email) {
+    const newEmail = {
+        subject: email.subject,
+        body: email.body,
+        from: email.from,
+        id: UtilService.makeId(),
+        isRead: false,
+        sentAt: Date.now()
+    }
+    let copyEmails = [...gEmails]
+    copyEmails = [newEmail, ...copyEmails]
+    gEmails = copyEmails
+    StorageService.save(EMAIL_KEY, gEmails)
+
+    return Promise.resolve()
+}
+
+function filterBy(key) {
+
+    const filterRegex = new RegExp(key, 'i');
+    var emails = gEmails.filter(email => {
+        return filterRegex.test(email.from) || filterRegex.test(email.body) || filterRegex.test(email.subject)
+    })
+    return Promise.resolve(emails)
+}
+
+
+function sortBy(value) {
+    let emails;
+    if (value === 'date') emails = _sortByDate()
+    else if (value === 'unread') emails = _sortByRead()
+    return Promise.resolve(emails)
+}
+function _sortByRead() {
+    var emails = gEmails.sort((email1, email2) => {
+        if (email1.isRead && !email2.isRead) return -1
+        if (!email1.isRead && email2.isRead) return 1
+        else return 0
+    })
+    return emails
+}
+
+function _sortByDate() {
+    var emails = gEmails.sort((email1, email2) => {
+        if (email1.sentAt > email2.sentAt) return -1
+        if (email1.sentAt > email2.sentAt) return 1
+        else return 0
+    })
+    return emails
+}
+
+function _getEmailIdxById(emailId) {
+    return gEmails.findIndex(email => email.id === emailId)
+}
+

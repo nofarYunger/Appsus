@@ -16,4 +16,4 @@ function emit(eventName, data) {
 }
 
 
-export const eventBusService = { on, emit };
+export const EventBusService = { on, emit };

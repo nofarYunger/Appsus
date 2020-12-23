@@ -3,6 +3,7 @@ import { EmailApp } from './Apps/EmailApp/EmailApp.jsx';
 import { NoteApp } from './Apps/NoteApp/NoteApp.jsx';
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { NoteAdd } from './Apps/NoteApp/cmps/NoteAdd.jsx';
+import { EmailCompose } from './Apps/EmailApp/cmps/EmailCompose.jsx';
 
 
 
@@ -21,6 +22,7 @@ export class App extends React.Component {
                     <Switch>
                         <Route path="/Note/edit/:noteId?" component={NoteAdd} />
                         <Route path="/Note" component={NoteApp} />
+                        <Route path="/Email/Compose" component={EmailCompose} />
                         <Route path="/Email" component={EmailApp} />
                         {/* <Route path="/About" component={About} /> */}
                         {/* <Route path="/" component={Home} /> */}
