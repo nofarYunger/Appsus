@@ -9,9 +9,7 @@ export class EmailDetails extends React.Component {
     };
 
     componentDidMount() {
-        console.log(this.props);
         const { emailId } = this.props.match.params;
-        console.log(bookId);
         EmailService.getEmailById(emailId).then(email => {
             this.setState({ email });
         });

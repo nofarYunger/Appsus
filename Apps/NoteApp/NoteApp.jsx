@@ -22,12 +22,12 @@ export class NoteApp extends React.Component {
         const notes = this.state.notes
         if (!notes) return null
         return (
-            <section className="app">
+            <section className="NoteApp">
                 <header>
                     <NoteFilter />
-                    <Link className="btn" to="/Note/edit/:noteId?">Add Note</Link>
-                    <NoteList notes={notes} />
+                    <Link className="btn" to="/Note/edit/:noteId?"><i className="fas fa-plus-square"></i></Link>
                 </header>
+                <NoteList notes={notes} />
             </section>
 
         );

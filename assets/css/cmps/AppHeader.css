@@ -28,6 +28,7 @@
 
 .AppHeader li {
     float: right;
+    padding: 10px;
 }
 
 .AppHeader li a {

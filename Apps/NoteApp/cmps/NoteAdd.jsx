@@ -1,27 +1,57 @@
+import { NoteImgForm } from "./forms/NoteImgForm.jsx";
+import { NoteTodosForm } from "./forms/NoteTodosForm.jsx";
+import { NoteTxtForm } from "./forms/NoteTxtForm.jsx";
+import { UtilService } from "../../../services/UtilService.js"
+import { NoteService } from "../services/NoteService.js"
+
+var txt = { type: 'NoteText', info: { txt: '' }, style: '' }
+// var img = { id: UtilService.makeId(), isPinned: false, type: 'NoteImg', info: { url: '', title: '' }, style: '' }
+// var todos = { id: UtilService.makeId(), isPinned: false, type: 'NoteTodos', info: { id: UtilService.makeId(), txt: '', doneAt: 0 }, style: '.' }
+
 export class NoteAdd extends React.Component {
     state = {
-        note: { txt }
+        note: txt
     }
+    // componentDidMount() {
+    //     this.setState({ note: txt })
+    // }
+    onSubmit = (ev) => {
+        ev.preventDefault()
 
-    onInputChange = (ev) => {//on input change
-        const value = ev.target.type === 'number' ? +ev.target.value
-            : ev.target.value;
-        const noteCopy = { ...this.state.Notes };
-        noteCopy[ev.target.name] = value; // like petCopy.name/power = 
+        NoteService.save(this.state.note).then(savedNote => {
+
+            this.props.history.goBack();
+        })
+    }
+    onInputChange = (ev) => {
+        ev.preventDefault();//on input change
+        const value = ev.target.value;
+        if (!value) return
+        var name = ev.target.name
+        const noteCopy = { ...this.state.note };
+        if (name.includes('info.')) {
+            name = name.slice(5, name.length)
+            noteCopy.info[name] = value; // like petCopy.name/power =
+        }
+        else { noteCopy[ev.target.name] = value } // like petCopy.name/power = 
         this.setState({
             note: noteCopy
         });
-    };
+    }
 
     render() {
-        return (
-            <form >
-                <textarea type="text" onChange={this.onInputChange} placeholder="Note..."></textarea>
-                <button type="submit">submit</button>
-
-            </form>
-
-        )
+        const currView = 'txt'
+        const { note } = this.state
+        const DynamicCmp = () => {
+            switch (currView) {
+                case 'txt': return <NoteTxtForm submit={this.onSubmit} callback={this.onInputChange} note={note} />
+                case 'img': return <NoteImgForm submit={this.onSubmit} callback={this.onInputChange} note={note} />
+                case 'todos': return <NoteTodosForm submit={this.onSubmit} callback={this.onInputChange} note={note} />
+            }
+        }
+        return (<section><DynamicCmp /> </section>)
     }
 }
+
+
 

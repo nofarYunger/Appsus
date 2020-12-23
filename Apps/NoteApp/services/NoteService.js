@@ -2,24 +2,72 @@ import { UtilService } from '../../../services/UtilService.js'
 import { StorageService } from '../../../services/StorageService.js'
 
 export const NoteService = {
-    query
-}
-
-const KEY = 'notesDB'
-
-function query() {
-    const storageNotes = StorageService.load(KEY);
-    if (storageNotes) {
-        return Promise.resolve(storageNotes);
-    }
-    _getNotes()
-    StorageService.save(KEY, gNotes)
-    return Promise.resolve(gNotes)
+    query,
+    save,
+    remove
 }
 var gNotes;
+const KEY = 'notesDB'
+_createNotes()
 
-function _getNotes() {
-    gNotes = [
+function _createNotes() {
+    gNotes = StorageService.load(KEY);
+    if (!gNotes || !gNotes.length) {
+        // Nothing in localStorage, use demo data
+        gNotes = _getDemoNotes()
+        _saveNotesToStorage();
+    }
+}
+function save(note) {
+
+    if (note.id) {
+        return _update(note);
+    } else {
+        return _add(note);
+    }
+}
+
+function _add(note) {
+    const noteToAdd = {
+        id: UtilService.makeId(),
+        isPinned: false,
+        ...note
+    };
+
+    gNotes = [noteToAdd, ...gNotes];
+    _saveNotesToStorage();
+    return Promise.resolve(noteToAdd);
+}
+
+function _update(note) {
+    const noteToUpdate = {
+        ...note
+    };
+    const notesCopy = [...gnotes];
+    const noteIdx = notesCopy.findIndex(note => note.id === note.id);
+    notesCopy[noteIdx] = noteToUpdate;
+    gNotes = notesCopy;
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate);
+}
+function _saveNotesToStorage() { StorageService.save(KEY, gNotes) }
+
+function remove(noteId) {
+    gNotes = gnotes.filter(note => note.id !== noteId);
+    _saveNotesToStorage();
+    return Promise.resolve();
+}
+
+// function getById(noteId) {
+//     const note = gnotes.find(note => note.id === noteId);
+//     return Promise.resolve(note);
+// }
+function query() {
+    return Promise.resolve(gNotes)
+}
+
+function _getDemoNotes() {
+    const notes = [
         {
             id: UtilService.makeId(),
             type: "NoteText",
@@ -50,8 +98,8 @@ function _getNotes() {
             info: {
                 label: "How was it:",
                 todos: [
-                    { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: 187111111 }
+                    { id: UtilService.makeId(), txt: "Do that", doneAt: null },
+                    { id: UtilService.makeId(), txt: "Do this", doneAt: 187111111 }
                 ]
             },
             style: {
@@ -60,5 +108,5 @@ function _getNotes() {
         }
 
     ];
-
+    return notes
 }
