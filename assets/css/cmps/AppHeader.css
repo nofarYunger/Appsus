@@ -1,13 +1,36 @@
-ul {
+.AppHeader {
+    font-family: sans-serif;
+}
+
+/*----------  Font Awesome  ----------*/
+
+@font-face {
+    font-family: 'fontawesome';
+    src: url("../../fonts/fontawesome/FontAwesome.otf");
+    src: url("../../fonts/fontawesome/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.fa {
+    display: inline-block;
+    font-family: fontawesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.AppHeader ul {
     list-style-type: none;
     overflow: hidden;
 }
 
-li {
+.AppHeader li {
     float: right;
 }
 
-li a {
+.AppHeader li a {
     color: #000;
     display: block;
     text-align: center;
@@ -16,7 +39,7 @@ li a {
     font-size: 14px;
 }
 
-li a:hover {
+.AppHeader li a:hover {
     text-decoration: underline;
 }
 
@@ -37,7 +60,7 @@ li a:hover {
     font-weight: bold;
 }
 
-.AppHeader .logo img {
+.AppHeader .logo {
     height: 50px;
 }
 

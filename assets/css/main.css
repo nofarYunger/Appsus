@@ -1,8 +1,15 @@
-@import '../../lib/animate.css';
+/* @import '../../lib/animate.css'; */
 /* Basics */
 
-/* @import './basics/base.css';
-@import './basics/forms.css'; */
+@import './basics/base.css';
+/* @import './basics/forms.css'; */
 /* Components: */
 
 @import './cmps/AppHeader.css';
+
+
+/* Email */
+@import '../../Apps/EmailApp/assets/css/EmailPreview.css';
+@import '../../Apps/EmailApp/assets/css/EmailList.css';
+@import '../../Apps/EmailApp/assets/css/EmailApp.css';
+@import '../../Apps/EmailApp/assets/css/EmailSideBar.css';
