@@ -1,91 +1,37 @@
 
-import { EmailService } from '../services/EmailService.js';
-const { Link } = ReactRouterDOM;
+import { EventBusService } from '../../../services/EventBusService.JS';
+// import { EmailService } from '../services/EmailService.js';
+// const { Link } = ReactRouterDOM;
 
 export class EmailDetails extends React.Component {
 
     state = {
-        email: null
+        email: {}
     };
 
     componentDidMount() {
-        const { emailId } = this.props.match.params;
-        EmailService.getEmailById(emailId).then(email => {
-            this.setState({ email });
-        });
+        this.setState({ email: this.props.email })
     }
 
-
-
-
-    getPriceClass = () => {
-        const book = this.state.book
-        if (book.listPrice.amount > 150) return 'red'
-        else if (book.listPrice.amount < 20) return 'green'
+    deleteEmail = (ev) => {
+        ev.preventDefault();
+        const emailId = this.state.email.id
+        EventBusService.emit('delete', emailId)
     }
-
-
-    bookPageCount = () => {
-        const book = this.state.book
-        if (book.pageCount > 500) return `Long reading`
-        else if (book.pageCount > 200) return `Decent reading`
-        else if (book.pageCount < 100) return `Light reading`
-        else return book.pageCount
-    }
-
-
-    getPrice = () => {
-        const book = this.state.book
-        if (!book.listPrice) return `₪${book.price}`
-        const curr = book.listPrice.currencyCode
-        switch (curr) {
-            case 'EUR':
-                return `${book.listPrice.amount}€`;
-            case 'ILS':
-                return `₪${book.listPrice.amount}`;
-            case 'USD':
-                return `${book.listPrice.amount}$`;
-            default:
-                break;
-        }
-
-    }
-
-
-    printReviews = () => {
-        const book = this.state.book
-        const reviews = book.reviews
-
-        return reviews.map((review, idx) => {
-
-            return <div className="review" key={idx}>
-                <h3>{review.fullName}s review :</h3>
-                <p> Rate:{review.rate}</p>
-                <p> Read at: {review.readAt}</p>
-                <p>{review.txt}</p>
-            </div>
-        })
-    }
-
 
 
     render() {
-        const book = this.state.book
-        if (!book) return null
+
+        const email = this.state.email
+        if (!email) return null
         return (
-            <div className={`book-modal`}  >
-                <img src={book.thumbnail} alt="" />
-                <h1>{book.title}</h1>
-                <h2>{book.subtitle}</h2>
-                <h3>Authors:{book.authors}</h3>
-                <p>Published Date: {book.publishedDate}</p>
-                <p>pageCount: {book.pageCount} type: {this.bookPageCount()}</p>
-                <h3 className={this.getPriceClass()}> {this.getPrice()}</h3>
-                { book.listPrice.isOnSale && <img className={'sale-icon'} src="https://cdn4.iconfinder.com/data/icons/color-webshop/512/sale_shopping_online_sell-512.png" alt="" />}
-                {book.reviews && this.printReviews()}
-                <Link to={`/book`}> <button>X</button></Link>
-                <Link to={`/book/info/${book.id}/editReview`}>Edit Review</Link>
+            <div className={`EmailDetails`}  >
+                <h1>{email.subject}</h1>
+                <p><span>{email.from}</span> <span className="emailAddress">{`<${email.from}@gmail.com>`}</span></p>
+                <p>{email.body}</p>
+                <div className="emailDitBtns" ><button className="btn" onClick={(ev) => this.deleteEmail(ev)}>🗑</button> <button onClick={this.toggleStarEmail} className="btn">⭐</button></div>
             </div>
+
         );
     }
 }

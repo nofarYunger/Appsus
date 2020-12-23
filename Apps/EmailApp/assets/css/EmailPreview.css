@@ -1,4 +1,6 @@
-.EmailPreview {
+
+/* style of the nerrow preview-bar:-----------------------------------------------  */
+.EmailPreviewShort {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -14,23 +16,46 @@
     margin-left: 30px;
 }
 
-.EmailPreview *>{
+.EmailPreviewShort *>{
     border: 1px solid black;
 }
 
-.EmailPreview .time{
+.EmailPreviewShort .time{
     flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+
 }
-.EmailPreview .body{
+.EmailPreviewShort .body{
     flex-grow:6;
     text-align: left;
 }
-.EmailPreview .from{
+.EmailPreviewShort .from{
     flex-grow:2;
-    text-align: left;
-    justify-self: left;
+    text-align: right;
+    /* justify-self: left; */
 }
-.EmailPreview .subj{
+.EmailPreviewShort .subj{
  font-weight: bold;
  text-align: left;
+}
+
+
+.EmailPreview{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.EmailDetails{
+    background-color: rgb(241, 237, 237);
+}
+
+.EmailDetails .emailAddress{
+    color: rgb(109, 109, 109);
+}
+
+.unRead .EmailPreviewShort{
+    font-weight: bold;
+    background-color: rgb(114, 113, 113);
 }
