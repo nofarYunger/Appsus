@@ -1,11 +1,21 @@
-import { utilService } from '../../../services/utilService.js'
-import { storageService } from '../../../services/storageService.js'
+import { UtilService } from '../../../services/UtilService.js'
+import { StorageService } from '../../../services/StorageService.js'
 
-// export const NoteService {
+export const NoteService = {
+    query
+}
 
-// }
+const KEY = 'notesDB'
 
-
+function query() {
+    const storageNotes = storageService.load(KEY);
+    if (storageNotes) {
+        return Promise.resolve(storageNotes);
+    }
+    _getNotes()
+    storageService.save(KEY, gNotes)
+    return Promise.resolve(gNotes)
+}
 var gNotes;
 
 function _getNotes() {
@@ -18,13 +28,16 @@ function _getNotes() {
             info: {
                 txt: "Fullstack Me Baby!"
 
+            },
+            style: {
+                backgroundColor: "#00d"
             }
         },
         {
             id: utilService.makeId(),
             type: "NoteImg",
             info: {
-                url: "http://some-img/me",
+                url: "https://s1.kikar.co.il/th/data/auto/nadm/tu/hmekxrx5__w643h448q95.jpg",
                 title: "Me playing Mi"
             },
             style: {
@@ -40,7 +53,12 @@ function _getNotes() {
                     { txt: "Do that", doneAt: null },
                     { txt: "Do this", doneAt: 187111111 }
                 ]
+            },
+            style: {
+                backgroundColor: "#00d"
             }
         }
+
     ];
+
 }
