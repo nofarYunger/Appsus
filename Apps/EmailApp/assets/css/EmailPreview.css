@@ -1,0 +1,36 @@
+.EmailPreview {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(211, 211, 211);
+    margin-top: 20px;
+    padding: 10px;
+    margin-right: 20px;
+   
+}
+.EmailList{
+    margin-left: 30px;
+}
+
+.EmailPreview *>{
+    border: 1px solid black;
+}
+
+.EmailPreview .time{
+    flex-grow: 1;
+}
+.EmailPreview .body{
+    flex-grow:6;
+    text-align: left;
+}
+.EmailPreview .from{
+    flex-grow:2;
+    text-align: left;
+    justify-self: left;
+}
+.EmailPreview .subj{
+ font-weight: bold;
+ text-align: left;
+}

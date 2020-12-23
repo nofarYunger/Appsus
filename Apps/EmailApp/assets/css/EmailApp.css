@@ -1,0 +1,13 @@
+.EmailApp-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.EmailSideBar {
+    flex-grow: 2
+}
+
+.EmailList{
+    flex-grow: 5;
+}

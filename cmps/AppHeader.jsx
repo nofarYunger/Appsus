@@ -6,9 +6,9 @@ export function AppHeader() {
 
         <header>
             <ul>
-                <div className="logo">
-                    <img alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
-                </div>
+
+                <img className="logo" alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
+
                 <li><a className="links" href="#user"><button className="signbutton" type="button">Sign in</button></a></li>
                 <li><a href="#grid"><img className="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps" /></a>
                 </li>

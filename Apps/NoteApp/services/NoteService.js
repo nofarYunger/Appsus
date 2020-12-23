@@ -8,12 +8,12 @@ export const NoteService = {
 const KEY = 'notesDB'
 
 function query() {
-    const storageNotes = storageService.load(KEY);
+    const storageNotes = StorageService.load(KEY);
     if (storageNotes) {
         return Promise.resolve(storageNotes);
     }
     _getNotes()
-    storageService.save(KEY, gNotes)
+    StorageService.save(KEY, gNotes)
     return Promise.resolve(gNotes)
 }
 var gNotes;
@@ -21,7 +21,7 @@ var gNotes;
 function _getNotes() {
     gNotes = [
         {
-            id: utilService.makeId(),
+            id: UtilService.makeId(),
             type: "NoteText",
             isPinned: true,
 
@@ -34,7 +34,7 @@ function _getNotes() {
             }
         },
         {
-            id: utilService.makeId(),
+            id: UtilService.makeId(),
             type: "NoteImg",
             info: {
                 url: "https://s1.kikar.co.il/th/data/auto/nadm/tu/hmekxrx5__w643h448q95.jpg",
@@ -45,7 +45,7 @@ function _getNotes() {
             }
         },
         {
-            id: utilService.makeId(),
+            id: UtilService.makeId(),
             type: "NoteTodos",
             info: {
                 label: "How was it:",
