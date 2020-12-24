@@ -1,4 +1,4 @@
-import { EmailService } from "../services/EmailService";
+import { EmailService } from "../services/EmailService.js";
 
 export class EmailCompose extends React.Component {
 
@@ -7,7 +7,7 @@ export class EmailCompose extends React.Component {
             subject: '',
             body: '',
             from: '',
-          
+
         }
     };
 
@@ -44,7 +44,7 @@ export class EmailCompose extends React.Component {
                 <label > Subject:<input type="text" name="subject" placeholder="Subject" value={email.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
                 <label > From:<input type="text" name="from" placeholder="Me" value={email.from} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
                 <label > To:<input type="text" placeholder="You" value="You" /></label>
-                <label >Message: <textarea name="body" cols="30" rows="10" onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
+                <label >Message: <textarea name="body" cols="30" rows="10" value={email.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
                 <button type="submit">Submit</button>
             </form>
         )
