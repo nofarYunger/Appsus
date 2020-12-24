@@ -5,10 +5,13 @@ import { UtilService } from "../../../services/UtilService.js"
 import { NoteService } from "../services/NoteService.js"
 
 
+
 export class NoteBar extends React.Component {
     render() {
-        return (<ul className="note-bar">
-            <li ><i className="fas fa-trash"></i></li>
+        const { id } = this.props.note;
+        const { onRemove } = this.props;
+        return (<ul className="note-bar card" >
+            <li onClick={() => { onRemove(id) }}><i className="fas fa-trash"></i></li>
             <li><i className="fas fa-thumbtack"></i></li>
             <li><i className="fas fa-palette"></i></li>
             <li><i className="fas fa-edit"></i></li>

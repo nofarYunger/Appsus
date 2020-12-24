@@ -43,7 +43,7 @@ function _update(note) {
     const noteToUpdate = {
         ...note
     };
-    const notesCopy = [...gnotes];
+    const notesCopy = [...gNotes];
     const noteIdx = notesCopy.findIndex(note => note.id === note.id);
     notesCopy[noteIdx] = noteToUpdate;
     gNotes = notesCopy;
@@ -53,13 +53,13 @@ function _update(note) {
 function _saveNotesToStorage() { StorageService.save(KEY, gNotes) }
 
 function remove(noteId) {
-    gNotes = gnotes.filter(note => note.id !== noteId);
+    gNotes = gNotes.filter(note => note.id !== noteId);
     _saveNotesToStorage();
     return Promise.resolve();
 }
 
 // function getById(noteId) {
-//     const note = gnotes.find(note => note.id === noteId);
+//     const note = gNotes.find(note => note.id === noteId);
 //     return Promise.resolve(note);
 // }
 function query() {
