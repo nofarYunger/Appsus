@@ -1,12 +1,15 @@
 
 import { EventBusService } from '../../../services/EventBusService.JS';
-// import { EmailService } from '../services/EmailService.js';
-// const { Link } = ReactRouterDOM;
+import { EmailService } from '../services/EmailService.js';
+import { EmailUserReply } from './EmailUserReplay.jsx';
+;
+
 
 export class EmailDetails extends React.Component {
 
     state = {
-        email: {}
+        email: {},
+        isReplyBoxOpen: false,
     };
 
     componentDidMount() {
@@ -19,17 +22,43 @@ export class EmailDetails extends React.Component {
         EventBusService.emit('delete', emailId)
     }
 
+    openReplyBox = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation()
+        const isreply = this.state.isReplyBoxOpen
+        this.setState({ isReplyBoxOpen: !isreply })
+    }
+
+    addReply = (reply) => {
+        const { id } = this.state.email
+        EmailService.addReply(reply, id)
+    }
+
 
     render() {
-
         const email = this.state.email
+        const { isReplyBoxOpen } = this.state
         if (!email) return null
         return (
             <div className={`EmailDetails`}  >
                 <h1>{email.subject}</h1>
                 <p><span>{email.from}</span> <span className="emailAddress">{`<${email.from}@gmail.com>`}</span></p>
                 <p>{email.body}</p>
-                <div className="emailDitBtns" ><button className="btn" onClick={(ev) => this.deleteEmail(ev)}>🗑</button> <button onClick={this.toggleStarEmail} className="btn">⭐</button></div>
+                {email.replys && <div className="replys">  {/* render only if replys exist  */}
+                    <h1>replys:</h1>
+                    {email.replys.map(reply => {
+                        return (
+                            <div className="reply">
+                                <h1>{reply.subject}</h1>
+                                <p>{reply.body} </p>
+                            </div>)
+                    })}
+                </div>}
+                <div className="emailDitBtns" >
+                    <span onClick={(ev) => this.deleteEmail(ev)}><i className="fas fa-trash"></i></span>
+                    <span onClick={(ev) => this.openReplyBox(ev)}><i className="fas fa-reply"></i></span>
+                </div>
+                {isReplyBoxOpen && <EmailUserReply email={email} callback={this.addReply} />}
             </div>
 
         );

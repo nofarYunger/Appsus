@@ -34,9 +34,9 @@ export class EmailApp extends React.Component {
     }
 
     onSetSort = (value) => {
-        console.log('sorted!');
         EmailService.sortBy(value)
             .then(emails => this.setState({ emails }))
+
     }
 
 

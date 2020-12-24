@@ -8,7 +8,9 @@ export const EmailService = {
     updateIsRead,
     add,
     filterBy,
-    sortBy
+    sortBy,
+    updateImportance,
+    addReply
 
 }
 
@@ -26,7 +28,9 @@ function _getEmails() {
             from: 'Yonit',
             id: UtilService.makeId(),
             isRead: false,
-            sentAt: 1551133930594
+            sentAt: 1551133930594,
+            isImportant: false
+
         },
         {
             subject: 'hey',
@@ -34,7 +38,9 @@ function _getEmails() {
             from: 'Nofar',
             id: UtilService.makeId(),
             isRead: false,
-            sentAt: 155113400000
+            sentAt: 155113400000,
+            isImportant: false
+
         },
 
         {
@@ -43,7 +49,9 @@ function _getEmails() {
             from: 'Dad',
             id: UtilService.makeId(),
             isRead: false,
-            sentAt: 1551133950594
+            sentAt: 1551133050594,
+            isImportant: false
+
         },
 
         {
@@ -52,7 +60,7 @@ function _getEmails() {
             from: 'Mom',
             id: UtilService.makeId(),
             isRead: false,
-            sentAt: 1551133930594
+            sentAt: 1551132930594
         },
 
         {
@@ -61,8 +69,55 @@ function _getEmails() {
             from: 'Michal',
             id: UtilService.makeId(),
             isRead: false,
-            sentAt: 1551133931114
+            sentAt: 1551133931114,
+            isImportant: false
+
         },
+        {
+            subject: 'Lorem!',
+            body: `
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias ipsa vero quisquam voluptatum suscipit nesciunt recusandae distinctio minus nam doloremque. Eos saepe quia placeat facilis harum, dolore doloribus incidunt laborum?`,
+            from: 'ipsum',
+            id: UtilService.makeId(),
+            isRead: false,
+            sentAt: 1541133931114,
+            isImportant: false
+
+        },
+        {
+            subject: 'Lorem!',
+            body: `
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias ipsa vero quisquam voluptatum suscipit nesciunt recusandae distinctio minus nam doloremque. Eos saepe quia placeat facilis harum, dolore doloribus incidunt laborum?`,
+            from: 'ipsum',
+            id: UtilService.makeId(),
+            isRead: false,
+            sentAt: 1541133931114,
+            isImportant: false
+
+        },
+        {
+            subject: 'Lorem!',
+            body: `
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias ipsa vero quisquam voluptatum suscipit nesciunt recusandae distinctio minus nam doloremque. Eos saepe quia placeat facilis harum, dolore doloribus incidunt laborum?`,
+            from: 'ipsum',
+            id: UtilService.makeId(),
+            isRead: false,
+            sentAt: 1541133931114,
+            isImportant: false
+
+        },
+        {
+            subject: 'Lorem!',
+            body: `
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias ipsa vero quisquam voluptatum suscipit nesciunt recusandae distinctio minus nam doloremque. Eos saepe quia placeat facilis harum, dolore doloribus incidunt laborum?`,
+            from: 'ipsum',
+            id: UtilService.makeId(),
+            isRead: false,
+            sentAt: 1541133931114,
+            isImportant: false
+
+        },
+
 
         ]
 
@@ -92,7 +147,6 @@ function deleteEmail(emailId) {
 
 function updateIsRead(emailId) {
     const idx = _getEmailIdxById(emailId)
-    console.log(idx);
     let copyEmails = [...gEmails]
     copyEmails[idx].isRead = true
     gEmails = copyEmails
@@ -107,7 +161,8 @@ function add(email) {
         from: email.from,
         id: UtilService.makeId(),
         isRead: false,
-        sentAt: Date.now()
+        sentAt: Date.now(),
+        isImportant: false
     }
     let copyEmails = [...gEmails]
     copyEmails = [newEmail, ...copyEmails]
@@ -131,19 +186,31 @@ function sortBy(value) {
     let emails;
     if (value === 'date') emails = _sortByDate()
     else if (value === 'unread') emails = _sortByRead()
+    else if (value === 'importance') emails = _sortByImportance()
     return Promise.resolve(emails)
 }
+
+
 function _sortByRead() {
-    var emails = gEmails.sort((email1, email2) => {
-        if (email1.isRead && !email2.isRead) return -1
-        if (!email1.isRead && email2.isRead) return 1
+    let emails = gEmails.sort((email1, email2) => {
+        if (email1.isRead && !email2.isRead) return 1
+        if (!email1.isRead && email2.isRead) return -1
+        else return 0
+    })
+    return emails
+}
+
+function _sortByImportance() {
+    let emails = gEmails.sort((email1, email2) => {
+        if (email1.isImportant && !email2.isImportant) return -1
+        if (!email1.isImportant && email2.isImportant) return 1
         else return 0
     })
     return emails
 }
 
 function _sortByDate() {
-    var emails = gEmails.sort((email1, email2) => {
+    let emails = gEmails.sort((email1, email2) => {
         if (email1.sentAt > email2.sentAt) return -1
         if (email1.sentAt > email2.sentAt) return 1
         else return 0
@@ -155,3 +222,25 @@ function _getEmailIdxById(emailId) {
     return gEmails.findIndex(email => email.id === emailId)
 }
 
+function updateImportance(emailId) {
+    const idx = _getEmailIdxById(emailId)
+    let copyEmails = [...gEmails]
+    copyEmails[idx].isImportant = !gEmails[idx].isImportant
+    gEmails = copyEmails
+    StorageService.save(EMAIL_KEY, gEmails)
+}
+
+function addReply(reply, emailId) {
+    console.log('reply', reply);
+    console.log('emailId', emailId);
+    const idx = _getEmailIdxById(emailId)
+    let copyEmails = [...gEmails]
+    let replys = copyEmails[idx].replys
+    if (!replys) copyEmails[idx].replys = []
+
+    copyEmails[idx].replys.unshift(reply)
+
+    gEmails = copyEmails
+    StorageService.save(EMAIL_KEY, gEmails)
+
+}

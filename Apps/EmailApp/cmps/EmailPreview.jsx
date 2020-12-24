@@ -1,3 +1,4 @@
+import { LongText } from "../../../cmps/LongText.jsx";
 import { EmailService } from "../services/EmailService.js"
 import { EmailDetails } from "./EmailDetails.jsx"
 
@@ -5,12 +6,11 @@ export class EmailPreview extends React.Component {
 
 
     state = {
-        isEmailOpen: false
+        isImportant: this.props.email.isImportant,
+        isEmailOpen: false,
     }
 
-    componentDidMount() {
 
-    }
 
     get emailDate() {
 
@@ -35,15 +35,27 @@ export class EmailPreview extends React.Component {
         EmailService.updateIsRead(emailId)
     }
 
+
+    toggleStarEmail = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation()
+        const { email } = this.props
+        EmailService.updateImportance(email.id)
+        this.setState({ isImportant: email.isImportant })
+    }
+
     render() {
         const email = this.props.email
+        const star = <i className="far fa-star"></i>
+        const starImportant = <i className="fas fa-star"></i>
+        var starBtn = (this.state.isImportant) ? starImportant : star
         return (
 
-            <div onClick={this.toggleDetails} className={`EmailPreview ${!email.isRead && 'unRead'}`}>
-                <div className="EmailPreviewShort">
+            <div className="EmailPreview">
+                <div onClick={this.toggleDetails} className={`EmailPreviewShort ${!email.isRead && 'unRead'}`}>
 
-                    <span className={"readBtn"}>⭐</span>
-                    <span className="body"> <span className="subj"> {email.subject} </span> {email.body}</span>
+                    <span className="readBtn" onClick={this.toggleStarEmail}>{starBtn}</span>
+                    <span className="body"> <span className="subj"> {email.subject} </span><LongText text={email.body} /></span>
                     <span className="from">{email.from}</span>
                     <span className="time">{this.emailDate}</span>
                 </div>
