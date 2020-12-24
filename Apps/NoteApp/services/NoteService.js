@@ -19,7 +19,6 @@ function _createNotes() {
     }
 }
 function save(note) {
-
     if (note.id) {
         return _update(note);
     } else {
@@ -44,7 +43,7 @@ function _update(note) {
         ...note
     };
     const notesCopy = [...gNotes];
-    const noteIdx = notesCopy.findIndex(note => note.id === note.id);
+    const noteIdx = notesCopy.findIndex(note => noteToUpdate.id === note.id);
     notesCopy[noteIdx] = noteToUpdate;
     gNotes = notesCopy;
     _saveNotesToStorage();
@@ -78,7 +77,7 @@ function _getDemoNotes() {
 
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#"
             }
         },
         {
@@ -89,7 +88,7 @@ function _getDemoNotes() {
                 title: "Me playing Mi"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: ""
             }
         },
         {
@@ -103,7 +102,7 @@ function _getDemoNotes() {
                 ]
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: ""
             }
         }
 

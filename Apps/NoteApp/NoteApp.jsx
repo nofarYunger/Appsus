@@ -8,7 +8,8 @@ const { Link } = ReactRouterDOM;
 export class NoteApp extends React.Component {
     state = {
         notes: '',
-        filterBy: { type: '', txt: '' }
+        filterBy: { type: '', txt: '' },
+        editIsOn: false
     }
     componentDidMount() {
         this.loadNotes()
@@ -18,7 +19,6 @@ export class NoteApp extends React.Component {
             .then(notes => this.setState({ notes }))
 
     }
-
     onRemoveNote = (noteId) => {
         console.log(noteId);
         NoteService.remove(noteId).then(() => {
@@ -27,6 +27,9 @@ export class NoteApp extends React.Component {
     }
     onSetFilter = (filterBy) => {
         this.setState({ filterBy });
+    }
+    onShowEdit = () => {
+        this.setState({ editIsOn: true });
     }
     // getNotesForDisplay = () => {
     //     const { filterBy, notes } = this.state;
@@ -41,17 +44,17 @@ export class NoteApp extends React.Component {
     //     return notes.filter(note => { filterRegex.test(note.name) && filterType === note.type });
     // }
     render() {
-        const notes = this.state.notes
+        const { notes } = this.state
         // const notesForDisplay = this.notesForDisplay;
         if (!notes) return null
         return (
             <section className="NoteApp">
                 <header>
                     <NoteFilter setFilter={this.onSetFilter} />
-                    <Link className="btn" to="/Note/edit/:noteId?"><i className="fas fa-plus-square"></i></Link>
-                </header>
+                    <NoteAdd />
+                </header >
                 <NoteList notes={notes} onRemove={this.onRemoveNote} />
-            </section>
+            </section >
 
         );
     }

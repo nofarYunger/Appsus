@@ -13,7 +13,7 @@ export class NoteFilter extends React.Component {
     };
 
     render() {
-        return <div>Filter <input name="txt" type="text" placeholder="Search" onChange={this.handleChange} />
+        return <div className="NoteFilter">Filter <input name="txt" type="text" placeholder="Search" onChange={this.handleChange} />
             <select name="type" onChange={this.handleChange}>
                 <option value=''>All</option>
                 <option value='Img'>Img</option>

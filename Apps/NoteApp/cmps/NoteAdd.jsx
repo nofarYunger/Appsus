@@ -4,7 +4,7 @@ import { NoteTxtForm } from "./forms/NoteTxtForm.jsx";
 import { UtilService } from "../../../services/UtilService.js"
 import { NoteService } from "../services/NoteService.js"
 
-var txt = { type: 'NoteText', info: { txt: '' }, style: '' }
+var txt = { type: 'NoteText', info: { txt: '' }, style: { backgroundColor: '' } }
 // var img = { id: UtilService.makeId(), isPinned: false, type: 'NoteImg', info: { url: '', title: '' }, style: '' }
 // var todos = { id: UtilService.makeId(), isPinned: false, type: 'NoteTodos', info: { id: UtilService.makeId(), txt: '', doneAt: 0 }, style: '.' }
 
@@ -17,9 +17,7 @@ export class NoteAdd extends React.Component {
     // }
     onSubmit = (ev) => {
         ev.preventDefault()
-
-        NoteService.save(this.state.note).then(savedNote => {
-
+        NoteService.save(this.state.note).then(() => {
             this.props.history.goBack();
         })
     }
@@ -49,7 +47,7 @@ export class NoteAdd extends React.Component {
                 case 'todos': return <NoteTodosForm submit={this.onSubmit} callback={this.onInputChange} note={note} />
             }
         }
-        return (<section><DynamicCmp /> </section>)
+        return (<section className="NoteAdd"><DynamicCmp /> </section>)
     }
 }
 
