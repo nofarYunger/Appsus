@@ -21,6 +21,7 @@
     --blue: #4885ed;
     --yellow: #f5f5689d;
     --darkblue: rgba(4, 22, 36, 0.871);
+    --darkgray: #202124;
     --gray: #F5F7F7;
 }
 
@@ -28,11 +29,18 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     color: var(--blue);
+    background-color: rgb(233, 232, 232);
 }
 
-.flex {
+.flex-col {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -43,9 +51,9 @@ input, select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-i {
+/* i {
     font-size: 1.5rem;
     color: var(--darkblue);
     cursor: pointer;
-    /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1); */
-}
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+} */

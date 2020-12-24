@@ -1,25 +1,9 @@
 .AppHeader {
     font-family: sans-serif;
+    background-color: #fff;
 }
 
-/*----------  Font Awesome  ----------*/
 
-@font-face {
-    font-family: 'fontawesome';
-    src: url("../../fonts/fontawesome/FontAwesome.otf");
-    src: url("../../fonts/fontawesome/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-.fa {
-    display: inline-block;
-    font-family: fontawesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 .AppHeader ul {
     list-style-type: none;
@@ -28,10 +12,25 @@
 
 .AppHeader li {
     float: right;
-    padding: 10px;
+    padding-right:10px ;
+   
+}
+.AppHeader i {
+    color: var(--darkgray);
+    font-size: 30px;
 }
 
-.AppHeader li a {
+.AppHeader  img {
+    height: 70px;
+}
+
+.AppHeader h1{
+    font-size: 40px;
+    color: var(--darkgray);
+    margin: 0;
+}
+
+/* .AppHeader li a {
     color: #000;
     display: block;
     text-align: center;
@@ -44,11 +43,6 @@
     text-decoration: underline;
 }
 
-.AppHeader .grid {
-    height: 23px;
-    position: relative;
-    bottom: 4px;
-}
 
 .AppHeader .signbutton {
     background-color: #4885ed;
@@ -61,9 +55,7 @@
     font-weight: bold;
 }
 
-.AppHeader .logo {
-    height: 50px;
-}
+
 
 .AppHeader .bar {
     margin: 0 auto;
@@ -120,4 +112,4 @@
 .AppHeader .button:focus {
     border: 1px solid #4885ed;
     padding: 9px 19px;
-}
+} */

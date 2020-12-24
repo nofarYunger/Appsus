@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    color: #202124;
 }
 
 .EmailSideBar {
     flex-grow: 2
 }
 
-.EmailList{
+.EmailList {
     flex-grow: 5;
 }

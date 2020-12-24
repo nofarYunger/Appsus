@@ -33,7 +33,6 @@
 .EmailPreviewShort .from{
     flex-grow:2;
     text-align: right;
-    /* justify-self: left; */
 }
 .EmailPreviewShort .subj{
  font-weight: bold;

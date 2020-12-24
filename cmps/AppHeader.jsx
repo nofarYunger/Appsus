@@ -1,25 +1,61 @@
-const { NavLink } = ReactRouterDOM;
-export function AppHeader() {
-    return (<section className="AppHeader">
+import { EmailFilter } from "../Apps/EmailApp/cmps/EmailFilter";
 
-        <header>
-            <ul>
-                <img className="logo" alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
-                <li><a className="links" href="#user"><button className="signbutton" type="button">Sign in</button></a></li>
-                <li><a href="#grid"><img className="grid" src="https://cdn3.iconfinder.com/data/icons/navigation-and-settings/24/Material_icons-01-11-512.png" title="Google apps" /></a>
-                </li>
-                <NavLink to={'/Note'}><li><i className="far fa-lightbulb"></i></li></NavLink>
-                <NavLink to={'/Email'}><li><i className="far fa-envelope"></i></li></NavLink>
-                {/* <Link to={'/Book'}> <li><a href="#books">Google Books</a></li></Link> */}
-            </ul>
-        </header>
+const { NavLink, withRouter } = ReactRouterDOM;
 
-    </section>
-    )
+
+
+export class _AppHeader extends React.Component {
+
+    state = {
+        pathname: '/'
+    }
+
+
+
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(this.props);
+        const { pathname } = this.props.location
+        if (prevState.pathname = pathname) return
+        this.setState({ pathname })
+    }
+
+
+
+
+
+    render() {
+        const { pathname } = this.state
+        return (<section className="AppHeader ">
+
+
+
+            <header className="flex-row">
+                <span className="flex-row" ><NavLink to={'/'}> <img className="logo" src="../assets/imgs/logo.png" />  </NavLink>
+                    <h1 className="logo">Appsus</h1> </span>
+
+
+                {/* {pathname === '/Email' && <EmailFilter />} */}
+
+
+
+
+                <ul>
+                    <NavLink to={'/Note'}><li><i className="far fa-lightbulb"></i></li></NavLink>
+                    <NavLink to={'/Email'}><li><i className="far fa-envelope"></i></li></NavLink>
+                    <NavLink to={'/Book'}> <li><i className="fas fa-book"></i></li></NavLink>
+                    <NavLink to={'/'}><li><i className="fas fa-th"></i></li></NavLink>
+                </ul>
+            </header>
+
+        </section>
+        )
+    }
 
 
 }
 
 
+export const AppHeader = withRouter(_AppHeader);
 
 
