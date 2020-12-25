@@ -54,11 +54,11 @@ export class NoteApp extends React.Component {
         if (!filterType) return notes.filter(note => filterRegex.test(note.type));
         return notes.filter(note => (filterRegex.test(note.type) && note.type === filterType));
     }
-    get notesForDisplay() {
-        const { filterBy } = this.state;
-        const filterRegex = new RegExp(filterBy.name, 'i');
-        return this.state.pets.filter(pet => filterRegex.test(pet.name));
-    }
+    // get notesForDisplay() {
+    //     const { filterBy } = this.state;
+    //     const filterRegex = new RegExp(filterBy.name, 'i');
+    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
+    // }
 
 
     render() {

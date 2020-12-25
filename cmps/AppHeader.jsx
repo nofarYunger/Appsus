@@ -1,4 +1,5 @@
 import { EmailFilter } from "../Apps/EmailApp/cmps/EmailFilter.jsx";
+import { NoteFilter } from "../Apps/NoteApp/cmps/NoteFilter.jsx";
 
 const { NavLink, withRouter } = ReactRouterDOM;
 
@@ -35,6 +36,7 @@ export class _AppHeader extends React.Component {
 
 
                 {pathname === '/Email' && <EmailFilter />}
+                {/* TODO   {<NoteFilter />} */}
 
 
 

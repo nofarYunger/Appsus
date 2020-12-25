@@ -14,7 +14,7 @@ export class NoteFilter extends React.Component {
     };
 
     render() {
-        return <div className="NoteFilter">Filter <input name="txt" type="text" placeholder="Search" onChange={this.handleChange} />
+        return <div className="filter">Filter <input name="txt" type="text" placeholder="Search" onChange={this.handleChange} />
             <select name="type" onChange={this.handleChange}>
                 <option value=''>All</option>
                 <option value='NoteImg'>Img</option>

@@ -16,7 +16,7 @@ export class EmailFilter extends React.Component {
         const searchIcon = <i className="fas fa-search"></i>
         return (
 
-            <div className="EmailFilter" >
+            <div className="filter" >
                 <input type="text" placeholder="search for email, subject orr name" name="key" value={this.state.key} onChange={this.handleChange} />{searchIcon}
             </div>
 

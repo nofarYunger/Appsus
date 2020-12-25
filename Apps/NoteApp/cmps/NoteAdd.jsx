@@ -16,7 +16,7 @@ export class NoteAdd extends React.Component {
         ev.stopPropagation()
         const { onAdd } = this.props
         onAdd(this.state.note)
-        this.refInput.current.reset()
+        this.refForm.current.reset()
     }
 
     onInputChange = (ev) => {
@@ -31,13 +31,13 @@ export class NoteAdd extends React.Component {
             note: noteCopy
         });
     }
-    refInput = React.createRef();
+    refForm = React.createRef();
 
     render() {
         const { note } = this.state
         return (
             <section className="NoteAdd">
-                <form onSubmit={this.onSubmit} ref={this.refInput}>
+                <form onSubmit={this.onSubmit} ref={this.refForm}>
                     <DynamicCmp note={note.info} onInputChange={(ev) => this.onInputChange(ev)} />
                     <button type="submit">submit</button>
                 </form>
