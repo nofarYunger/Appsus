@@ -19,3 +19,7 @@
 @import '../../Apps/EmailApp/assets/css/EmailList.css';
 @import '../../Apps/EmailApp/assets/css/EmailApp.css';
 @import '../../Apps/EmailApp/assets/css/EmailSideBar.css';
+
+
+/* BOOKS */
+@import '../../Apps/BookApp/assets/css/Book.css';
