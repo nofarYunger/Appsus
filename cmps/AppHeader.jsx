@@ -1,4 +1,4 @@
-import { EmailFilter } from "../Apps/EmailApp/cmps/EmailFilter";
+import { EmailFilter } from "../Apps/EmailApp/cmps/EmailFilter.jsx";
 
 const { NavLink, withRouter } = ReactRouterDOM;
 
@@ -7,7 +7,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
 export class _AppHeader extends React.Component {
 
     state = {
-        pathname: '/'
+        pathname: ''
     }
 
 
@@ -16,16 +16,15 @@ export class _AppHeader extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         console.log(this.props);
         const { pathname } = this.props.location
-        if (prevState.pathname = pathname) return
+        console.log(pathname);
+        if (prevState.pathname === pathname) return
         this.setState({ pathname })
     }
 
 
-
-
-
     render() {
         const { pathname } = this.state
+        console.log('pathname:', pathname);
         return (<section className="AppHeader ">
 
 
@@ -35,7 +34,7 @@ export class _AppHeader extends React.Component {
                     <h1 className="logo">Appsus</h1> </span>
 
 
-                {/* {pathname === '/Email' && <EmailFilter />} */}
+                {pathname === '/Email' && <EmailFilter />}
 
 
 

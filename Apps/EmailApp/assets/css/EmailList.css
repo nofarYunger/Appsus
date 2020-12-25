@@ -1,0 +1,64 @@
+/* EMAIL LIST LAYOUT--------------------------------------------------------------------- */
+
+.EmailList {
+    margin-left: 30px;
+}
+
+.EmailPreviewShort {
+    width: 100%;
+    border: 1px solid var(--gray);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    font-family: roboto-light, sans-serif;
+}
+
+.EmailPreviewShort *> {
+    border: 1px solid black;
+}
+
+.EmailPreviewShort .time {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.EmailPreviewShort .body {
+    flex-grow: 6;
+    text-align: left;
+}
+
+.EmailPreviewShort .from {
+    flex-grow: 2;
+    text-align: right;
+}
+
+.EmailPreviewShort .subj {
+    font-family: roboto-regular, sans-serif;
+    text-align: left;
+}
+
+.EmailPreview {
+    display: flex;
+    flex-direction: column;
+}
+
+.EmailDetails {
+    background-color: rgb(241, 237, 237);
+}
+
+.EmailDetails .emailAddress {
+    color: rgb(109, 109, 109);
+}
+
+.unRead .EmailPreviewShort {
+    font-weight: bold;
+    background-color: rgb(114, 113, 113);
+}
+
+.reply {
+    background-color: rgb(241, 123, 123);
+}

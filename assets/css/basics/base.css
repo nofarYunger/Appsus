@@ -17,6 +17,30 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* ------------ ROBOTO -------------- */
+
+@font-face {
+    font-family: roboto-thin;
+    src: url('../../fonts/Roboto/Roboto-Thin.ttf');
+}
+
+@font-face {
+    font-family: roboto-light;
+    src: url('../../fonts/Roboto/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: roboto-regular;
+    src: url('../../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: roboto-medium;
+    src: url('../../fonts/Roboto/Roboto-Medium.ttf');
+}
+
+/* ------------------------------------------ */
+
 :root {
     --blue: #4885ed;
     --yellow: #f5f5689d;
@@ -26,10 +50,11 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: roboto-regular, sans-serif;
     font-size: 20px;
     color: var(--blue);
     background-color: rgb(233, 232, 232);
+    margin: 0;
 }
 
 .flex-col {
@@ -38,6 +63,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -48,7 +74,13 @@ body {
 input, select {
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: roboto-light, sans-serif;
+}
+
+input:focus, select:focus {
+    outline: none;
+    font-family: roboto-regular, sans-serif;
+
 }
 
 /* i {

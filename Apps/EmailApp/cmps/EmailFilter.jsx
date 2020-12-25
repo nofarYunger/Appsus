@@ -1,3 +1,5 @@
+import { EventBusService } from "../../../services/EventBusService.js";
+
 export class EmailFilter extends React.Component {
     state = {
         key: ''
@@ -7,14 +9,15 @@ export class EmailFilter extends React.Component {
     handleChange = (ev) => {
         const { value } = ev.target
         this.setState({ key: value })
-
-        this.props.callback(value)
+        EventBusService.emit('filterBy', value)
+        // this.props.callback(value)
     };
     render() {
+        const searchIcon = <i className="fas fa-search"></i>
         return (
 
             <div className="EmailFilter" >
-                <input type="text" name="key" value={this.state.key} onChange={this.handleChange} />
+                <input type="text" placeholder="search for email, subject orr name" name="key" value={this.state.key} onChange={this.handleChange} />{searchIcon}
             </div>
 
         );

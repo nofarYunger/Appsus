@@ -2,7 +2,7 @@ import { EmailList } from './cmps/EmailList.jsx'
 import { EventBusService } from '../../services/EventBusService.js'
 import { EmailSideBar } from './cmps/EmailSideBar.jsx'
 import { EmailService } from './services/EmailService.js'
-import { EmailFilter } from './cmps/EmailFilter.jsx'
+// import { EmailFilter } from './cmps/EmailFilter.jsx'
 export class EmailApp extends React.Component {
 
 
@@ -12,13 +12,19 @@ export class EmailApp extends React.Component {
 
     componentDidMount() {
         this.loadEmails()
-        this.unsubscribe = EventBusService.on('delete', (emailId) => {
+        this.unsubscribeOnDelete = EventBusService.on('delete', (emailId) => {
             EmailService.deleteEmail(emailId)
             this.loadEmails()
         });
+        this.unsubscribeOnFiter = EventBusService.on('filterBy', (value) => {
+            this.onSetFilter(value)
+        });
     }
+
+
     componentWillUnmount() {
-        this.unsubscribe();
+        this.unsubscribeOnDelete();
+        this.unsubscribeOnFiter()
     }
 
 
@@ -46,7 +52,7 @@ export class EmailApp extends React.Component {
         return (
 
             <section className="EmailApp-wrapper">
-                <EmailFilter callback={this.onSetFilter} />
+                {/* <EmailFilter callback={this.onSetFilter} /> */}
                 <EmailList emails={this.state.emails} />
                 <EmailSideBar callback={this.onSetSort} />
 

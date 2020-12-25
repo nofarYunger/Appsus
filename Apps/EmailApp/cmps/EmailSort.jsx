@@ -13,10 +13,14 @@ export class EmailSort extends React.Component {
         return (
 
             <div className="EmailSort" >
-                <h2>sort mail by:</h2>
-                <label>Date <input type="radio" name="sortBy" value="date" onChange={this.handleChange}/></label>
-                <label>Un Read <input type="radio" name="sortBy" value="unread" checked="checked" onChange={this.handleChange}/></label>
-                <label>Importance <input type="radio" name="sortBy" value="importance" onChange={this.handleChange}/></label>
+                <h2>Sort mail by:</h2>
+                <select onChange={this.handleChange} name="sortBy" id="">
+                    <option value="unread">Un Read</option>
+                    <option value="date">Date</option>
+                    <option value="importance">Importance</option>
+
+                </select>
+
             </div>
         );
     }
