@@ -40,11 +40,11 @@ export class EmailUserReply extends React.Component {
         return (
 
             <div className="EmailUserReply" >
-                <form onSubmit={this.addReply} >
+                <form className="grid-form" onSubmit={this.addReply} >
                     <h1>Your reply</h1>
-                    <label > Subject:<input type="text" name="subject" placeholder="Subject" value={reply.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
-                    <label >Message: <textarea name="body" cols="30" rows="10" value={reply.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
-                    <button type="submit">Submit</button>
+                    <label className="reply-subj flex-row" > Subject:<input type="text" name="subject" placeholder="Subject" value={reply.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
+                    <label className="reply-body" >Message: <textarea name="body" value={reply.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
+                    <button className="emailBtn" type="submit">Submit</button>
                 </form>
             </div>
         );

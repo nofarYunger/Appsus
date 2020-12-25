@@ -53,8 +53,8 @@ export class EmailApp extends React.Component {
 
             <section className="EmailApp-wrapper">
                 {/* <EmailFilter callback={this.onSetFilter} /> */}
-                <EmailList emails={this.state.emails} />
                 <EmailSideBar callback={this.onSetSort} />
+                <EmailList emails={this.state.emails} />
 
             </section>
 

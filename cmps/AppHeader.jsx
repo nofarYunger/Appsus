@@ -45,7 +45,7 @@ export class _AppHeader extends React.Component {
                     <NavLink to={'/Note'}><li><i className="far fa-lightbulb"></i></li></NavLink>
                     <NavLink to={'/Email'}><li><i className="far fa-envelope"></i></li></NavLink>
                     <NavLink to={'/Book'}> <li><i className="fas fa-book"></i></li></NavLink>
-                    <NavLink to={'/'}><li><i className="fas fa-th"></i></li></NavLink>
+                    {/* <NavLink to={'/'}><li><i className="fas fa-th"></i></li></NavLink> */}
                 </ul>
             </header>
 
