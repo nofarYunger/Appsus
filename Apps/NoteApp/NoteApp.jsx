@@ -1,5 +1,4 @@
 import { NoteAdd } from "./cmps/NoteAdd.jsx";
-import { NoteFilter } from "./cmps/NoteFilter.jsx";
 import { NoteList } from "./cmps/NoteList.jsx";
 import { NoteService } from './services/NoteService.js'
 import { EventBusService } from '../../services/EventBusService.js'
@@ -27,6 +26,7 @@ export class NoteApp extends React.Component {
     onAdd = (note) => {
         NoteService.save(note)
             .then(() => this.loadNotes())
+        // return Promise.resolve()
     }
     componentWillUnmount() {
         this.unsubscribe();
@@ -59,11 +59,7 @@ export class NoteApp extends React.Component {
         return notes.filter(note => (filterRegex.test(note.type) && note.type === filterType));
 
     }
-    // get notesForDisplay() {
-    //     const { filterBy } = this.state;
-    //     const filterRegex = new RegExp(filterBy.name, 'i');
-    //     return this.state.pets.filter(pet => filterRegex.test(pet.name));
-    // }
+
 
 
     render() {
@@ -73,7 +69,6 @@ export class NoteApp extends React.Component {
         return (
             <section className="NoteApp">
                 <header>
-                    {/* <NoteFilter setFilter={this.onSetFilter} /> */}
                     <NoteAdd onAdd={this.onAdd} />
                 </header >
                 <NoteList notes={notesForDisplay} onRemove={this.onRemoveNote} />
