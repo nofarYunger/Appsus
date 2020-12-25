@@ -1,8 +1,7 @@
-import { NoteTxt } from './NoteTxt.jsx'
-import { NoteImg } from './NoteImg.jsx'
-import { NoteTodos } from './NoteTodos.jsx'
-import { NoteBar } from './NoteBar.jsx'
-
+import { NoteTxt } from '../../NoteApp/cmps//NoteTxt.jsx'
+import { NoteImg } from '../../NoteApp/cmps//NoteImg.jsx'
+import { NoteTodos } from '../../NoteApp/cmps//NoteTodos.jsx'
+import { NoteBar } from '../../NoteApp/cmps/NoteBar.jsx'
 export function NotePreview({ note, onRemove }) {
     var currView = note.type
     var bColor = note.style.backgroundColor

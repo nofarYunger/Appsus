@@ -20,6 +20,9 @@ export class NoteApp extends React.Component {
             NoteService.save(note)
                 .then(() => this.loadNotes())
         });
+        this.unsubscribeOnFiter = EventBusService.on('filterBy', (value) => {
+            this.onSetFilter(value)
+        });
     }
 
     onAdd = (note) => {
@@ -49,10 +52,14 @@ export class NoteApp extends React.Component {
     getNotesForDisplay = () => {
         const { filterBy, notes } = this.state;
         if (!notes) return null
+        notes.sort(function (x, y) {
+            return (x.isPinned === y.isPinned) ? 0 : x ? -1 : 1;
+        });
         const filterRegex = new RegExp(filterBy.txt, 'i');
         const filterType = filterBy.type
         if (!filterType) return notes.filter(note => filterRegex.test(note.type));
         return notes.filter(note => (filterRegex.test(note.type) && note.type === filterType));
+
     }
     // get notesForDisplay() {
     //     const { filterBy } = this.state;
@@ -69,7 +76,7 @@ export class NoteApp extends React.Component {
         return (
             <section className="NoteApp">
                 <header>
-                    <NoteFilter setFilter={this.onSetFilter} />
+                    {/* <NoteFilter setFilter={this.onSetFilter} /> */}
                     <NoteAdd onAdd={this.onAdd} />
                 </header >
                 <NoteList notes={notesForDisplay} onRemove={this.onRemoveNote} />

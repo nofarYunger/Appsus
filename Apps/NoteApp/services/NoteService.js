@@ -92,6 +92,7 @@ function _getDemoNotes() {
         {
             id: UtilService.makeId(),
             type: "NoteImg",
+            isPinned: true,
             info: {
                 url: "https://s1.kikar.co.il/th/data/auto/nadm/tu/hmekxrx5__w643h448q95.jpg",
                 title: "Me playing Mi"
@@ -103,6 +104,7 @@ function _getDemoNotes() {
         {
             id: UtilService.makeId(),
             type: "NoteTodos",
+            isPinned: true,
             info: {
                 label: "How was it:",
                 todos: [

@@ -36,10 +36,7 @@ export class _AppHeader extends React.Component {
 
 
                 {pathname === '/Email' && <EmailFilter />}
-                {/* TODO   {<NoteFilter />} */}
-
-
-
+                {pathname === '/Note' && <NoteFilter />}
 
                 <ul>
                     <NavLink to={'/Note'}><li><i className="far fa-lightbulb"></i></li></NavLink>
