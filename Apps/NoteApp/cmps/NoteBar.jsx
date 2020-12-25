@@ -32,7 +32,10 @@ export class NoteBar extends React.Component {
         }
         this.setState({ note: noteCopy })
         EventBusService.emit('change', noteCopy)
-
+    }
+    onEdit = () => {
+        const noteCopy = { ...this.state.note };
+        EventBusService.emit('edit', noteCopy)
     }
     render() {
 
@@ -42,7 +45,7 @@ export class NoteBar extends React.Component {
         const { onRemove } = this.props;
         return (<ul className="note-bar " >
             <li onClick={() => { onRemove(id) }}><i className="fas fa-trash"></i></li>
-            <li onClick={() => this.onCheck(id)}><i className="fas fa-thumbtack" ref={this.refPin}></i></li>
+            <li onClick={() => this.onCheck()}><i className="fas fa-thumbtack" ref={this.refPin}></i></li>
             <li> <input name="backgroundColor" onChange={(event) => this.handleChangeStyle(event)} value={style} className="color-pallete" type="color" list="presets" />
                 <datalist id="presets">
                     <option value="#cccccc">Grey</option>
@@ -53,7 +56,7 @@ export class NoteBar extends React.Component {
                 </datalist><i className="fas fa-palette">
                 </i>
             </li>
-            <li ><i className="fas fa-edit"></i></li>
+            <li onClick={() => { this.onEdit() }}><i className="fas fa-edit"></i></li>
             {/* <li ><i className="fas fa-check"></i></li> */}
         </ul >)
     }

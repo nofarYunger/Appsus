@@ -1,3 +1,5 @@
+import { EventBusService } from "../../../services/EventBusService..js"
+
 export class NoteAdd extends React.Component {
     state = {
         note: { type: "NoteText", info: {} },
@@ -12,20 +14,35 @@ export class NoteAdd extends React.Component {
         this.setState({
             note: {
                 type: "NoteText", info: {},
-            }, currView: "NoteText"
+            }, currView: "NoteText", isEdit: false
 
         });
-    }
 
+    }
+    onReset = () => {
+        this.setState({
+            note: {
+                type: "NoteText", info: {},
+            }, currView: "NoteText", isEdit: false
+
+        });
+
+    }
+    componentDidMount() {
+        this.unsubscribe = EventBusService.on('edit', (note) => {
+            if (!note) return
+            console.log('edit');
+            this.setState({ note, currView: note.type, isEdit: true })
+
+        });
+
+    }
     onInputChange = (ev) => {
         ev.preventDefault()
         var value = ev.target.value;
-        // if (!value) return
         var name = ev.target.name
         const noteCopy = { ...this.state.note };
         noteCopy.info[name] = value
-
-        // like petCopy.name/power = 
         this.setState({
             note: noteCopy
         });
@@ -45,58 +62,59 @@ export class NoteAdd extends React.Component {
 
     refForm = React.createRef();
 
+
     render() {
         const { note } = this.state
         const { currView } = this.state
+        const { isEdit } = this.state
+
         return (
             <section className="NoteAdd">
+                <button onClick={this.onReset}>X</button>
                 <form onSubmit={this.onSubmit} ref={this.refForm}>
                     <select className="currView" name="currView" onChange={(ev) => { this.onChangeForm(ev) }}>
-                        <option value="NoteText">txt</option>
-                        <option value="NoteImg">img</option>
-                        <option value="NoteTodos">todos</option>
-                        F
+                        <option selected={currView === "NoteText" && "selected"} value="NoteText">Note</option>
+                        <option selected={currView === "NoteImg" && "selected"} value="NoteImg">Img</option>
+                        <option selected={currView === "NoteTodos" && "selected"} value="NoteTodos">Todos</option>
                     </select>
-                    <DynamicCmp currView={currView} note={note.info} onInputChange={(ev) => this.onInputChange(ev)} />
-                    <button type="submit">submit</button>
+                    <DynamicCmp isEdit={isEdit} currView={currView} note={note.info} onInputChange={(ev) => this.onInputChange(ev)} />
+                    <button type="submit">{(this.state.note.id) ? 'Update' : 'Add'}</button>
 
                 </form>
             </section>)
     }
 }
-function DynamicCmp({ onInputChange, note, currView }) {
+function DynamicCmp({ onInputChange, note, currView, isEdit }) {
     var currView = currView
     switch (currView) {
-        case 'NoteText': return <NoteTxtForm note={note} onInputChange={onInputChange} />
-        case 'NoteImg': return <NoteImgForm note={note} onInputChange={onInputChange} />
-        case 'NoteTodos': return <NoteTodosForm note={note} onInputChange={onInputChange} />
+        case 'NoteText': return <NoteTxtForm isEdit={isEdit} note={note} onInputChange={onInputChange} />
+        case 'NoteImg': return <NoteImgForm isEdit={isEdit} note={note} onInputChange={onInputChange} />
+        case 'NoteTodos': return <NoteTodosForm isEdit={isEdit} note={note} onInputChange={onInputChange} />
     }
 }
 
-function NoteImgForm({ onInputChange }) {
+function NoteImgForm({ note, onInputChange, isEdit }) {
     return (
         <React.Fragment>
-            <input name="title" type="text" placeholder="Title..." onChange={(ev) => onInputChange(ev)} ></input>
-            <input name="url" type="text" placeholder="Url..." onChange={(ev) => onInputChange(ev)} ></input>
+            <input name="title" value={isEdit ? note.title : ''} type="text" placeholder="Title..." onChange={(ev) => onInputChange(ev)} ></input>
+            <input name="url" value={isEdit ? note.url : ''} type="text" placeholder="Url..." onChange={(ev) => onInputChange(ev)} ></input>
         </React.Fragment>
 
     )
 }
-function NoteTodosForm({ onInputChange }) {
+function NoteTodosForm({ note, onInputChange, isEdit }) {
     return (
         <React.Fragment>
-            <input name="label" type="text" placeholder="Label..." onChange={(ev) => onInputChange(ev)} ></input>
-            <input name="todos" type="text" placeholder="Todo..." onChange={(ev) => onInputChange(ev)} ></input>
+            <input name="label" value={isEdit ? note.label : ''} type="text" placeholder="Label..." onChange={(ev) => onInputChange(ev)} ></input>
+            <input name="todos" value={isEdit ? note.todos : ''} type="text" placeholder="Todo..." onChange={(ev) => onInputChange(ev)} ></input>
         </React.Fragment>
 
     )
 }
-function NoteTxtForm({ onInputChange }) {
+function NoteTxtForm({ note, onInputChange, isEdit }) {
     return (
         <React.Fragment>
-            <textarea name="txt" type="text" placeholder="text..." onInput={(ev) => onInputChange(ev)}></textarea>
+            <textarea name="txt" value={isEdit ? note.txt : ''} type="text" placeholder="text..." onInput={(ev) => onInputChange(ev)}></textarea>
         </React.Fragment>
-
-
     )
 }
