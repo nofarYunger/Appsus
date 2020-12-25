@@ -152,3 +152,7 @@ i {
     cursor: pointer;
     padding: 10px;
 }
+
+a {
+    text-decoration: none;
+}
