@@ -15,7 +15,6 @@ export class NoteApp extends React.Component {
     componentDidMount() {
         this.loadNotes()
         this.unsubscribe = EventBusService.on('change', (note) => {
-            console.log('NoteApp Mounted');
             if (!note) return
             NoteService.save(note)
                 .then(() => this.loadNotes())
@@ -38,7 +37,6 @@ export class NoteApp extends React.Component {
 
     }
     onRemoveNote = (noteId) => {
-        console.log(noteId);
         NoteService.remove(noteId).then(() => {
             this.loadNotes()
         })
@@ -71,7 +69,6 @@ export class NoteApp extends React.Component {
     render() {
         const { notes } = this.state
         const notesForDisplay = this.getNotesForDisplay();
-        console.log(notesForDisplay);
         if (!notes) return <div>Loadiung</div>
         return (
             <section className="NoteApp">

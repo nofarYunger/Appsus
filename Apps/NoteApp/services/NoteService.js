@@ -20,7 +20,7 @@ function _createNotes() {
     }
 }
 function save(note) {
-    console.log('gNotes', gNotes);
+
     if (!note) return Promise.resolve()
     if (note.id) {
         return _update(note);
@@ -30,7 +30,7 @@ function save(note) {
 }
 
 function _add(note) {
-    console.log('add');
+
     const noteToAdd = {
         id: UtilService.makeId(),
         isPinned: false,
@@ -46,7 +46,7 @@ function _add(note) {
 }
 
 function _update(note) {
-    console.log('update');
+
 
     const noteToUpdate = {
         ...note

@@ -1,40 +1,24 @@
 /* LAYOUT:------------------------------------------------------------------------------------------- */
 
 .EmailApp-wrapper {
-    display: flex;
+    /* height: 100%; */
+    /* display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: stretch; */
     color: #202124;
+    /* gap: 10px; */
+    margin: 0px 10px;
 }
 
 .EmailSideBar {
-    flex-grow: 2
+    width: 20%;
+    top: 80px;
 }
 
 .EmailList {
-    flex-grow: 5;
+    top: 80px;
+    width: 80%;
+    right: 0;
+    position: absolute;
 }
 
-/* EMAIL FILTER:------------------------------------------------------------------------------- */
-
-.filter input {
-    box-shadow: none;
-    border: 1px solid rgb(233, 232, 232);
-    width: 40vw;
-    height: 30px;
-    border-radius: 40px;
-}
-
-.filter input:focus {
-    border: none;
-    background-color: rgb(233, 232, 232);
-    /* font-family: roboto-regular, sans-serif; */
-    width: 40vw;
-    height: 30px;
-    border-radius: 40px;
-}
-
-.filter .fa-search {
-    color: rgb(233, 232, 232);
-    height: 30px;
-}

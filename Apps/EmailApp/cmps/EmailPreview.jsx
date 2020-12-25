@@ -52,7 +52,7 @@ export class EmailPreview extends React.Component {
         return (
 
             <div className="EmailPreview">
-                <div onClick={this.toggleDetails} className={`EmailPreviewShort ${!email.isRead && 'unRead'}`}>
+                <div onClick={this.toggleDetails} className={`EmailPreviewShort flex-row ${!email.isRead && 'unRead'} ${this.state.isEmailOpen && 'emailOpen'}`}>
 
                     <span className="readBtn" onClick={this.toggleStarEmail}>{starBtn}</span>
                     <span className="body"> <span className="subj"> {email.subject} </span><LongText text={email.body} /></span>

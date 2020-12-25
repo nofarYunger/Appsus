@@ -5,7 +5,7 @@ export class NoteFilter extends React.Component {
     }
 
     handleChange = (ev) => {
-        console.log('filter');
+
         const filterBy = { ...this.state.filterBy }
         filterBy[ev.target.name] = ev.target.value;
         this.setState({ filterBy }, EventBusService.emit('filterBy', filterBy))

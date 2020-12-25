@@ -1,5 +1,3 @@
-import { UtilService } from "../../../services/UtilService.js"
-import { NoteService } from "../services/NoteService.js"
 import { EventBusService } from '../../../services/EventBusService.js'
 
 export class NoteBar extends React.Component {
@@ -10,9 +8,9 @@ export class NoteBar extends React.Component {
 
     handleChangeStyle = (ev) => {
         ev.preventDefault();//on input change
-        console.log(ev);
+
         const value = ev.target.value;
-        console.log(value);
+
         if (!value) return
         var name = ev.target.name
         const noteCopy = { ...this.state.note };
@@ -20,7 +18,7 @@ export class NoteBar extends React.Component {
         // like petCopy.name/power = 
         this.setState({ note: noteCopy })
         EventBusService.emit('change', noteCopy)
-        console.log('NoteSTYLE sUBMIT');
+
     }
     onCheck = () => {
         const noteCopy = { ...this.state.note };
@@ -39,7 +37,7 @@ export class NoteBar extends React.Component {
     render() {
 
         const { id } = this.props.note;
-        console.log(id);
+
         const { style } = this.props.note;
         const { onRemove } = this.props;
         return (<ul className="note-bar " >

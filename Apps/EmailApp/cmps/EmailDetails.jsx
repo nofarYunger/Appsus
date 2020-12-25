@@ -1,5 +1,5 @@
 
-import { EventBusService } from '../../../services/EventBusService.JS';
+import { EventBusService } from '../../../services/EventBusService.js';
 import { EmailService } from '../services/EmailService.js';
 import { EmailUserReply } from './EmailUserReplay.jsx';
 ;
@@ -44,8 +44,8 @@ export class EmailDetails extends React.Component {
                 <h1>{email.subject}</h1>
                 <p><span>{email.from}</span> <span className="emailAddress">{`<${email.from}@gmail.com>`}</span></p>
                 <p>{email.body}</p>
-                {email.replys && <div className="replys">  {/* render only if replys exist  */}
-                    <h1>replys:</h1>
+                {email.replys && email.replys.length > 0 && <div className="replys">  {/* render only if replys exist  */}
+                    <h1>Replys:</h1>
                     {email.replys.map(reply => {
                         return (
                             <div className="reply">

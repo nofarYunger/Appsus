@@ -1,2 +1,7 @@
 .EmailSideBar {
-background-color: rgb(241, 169, 13);}
+    background-color: var(--emailYellow);
+    position: fixed;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+}

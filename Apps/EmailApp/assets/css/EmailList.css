@@ -1,64 +1,156 @@
-/* EMAIL LIST LAYOUT--------------------------------------------------------------------- */
+/* ---------------------------------EMAIL LIST LAYOUT------------------------------------ */
 
-.EmailList {
-    margin-left: 30px;
-}
+.EmailList {}
 
 .EmailPreviewShort {
-    width: 100%;
+    height: 1em;
     border: 1px solid var(--gray);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     background-color: #ffffff;
     padding: 20px;
     font-family: roboto-light, sans-serif;
 }
 
-.EmailPreviewShort *> {
-    border: 1px solid black;
+.EmailPreviewShort:hover, .emailOpen {
+    box-shadow: 0px 2px 7px #919191;
+    position: relative;
+    z-index: 1;
 }
 
 .EmailPreviewShort .time {
-    flex-grow: 1;
+    width: 15%;
     text-align: right;
     margin-right: 30px;
 }
 
 .EmailPreviewShort .body {
-    flex-grow: 6;
+    width: 75%;
     text-align: left;
+    overflow: hidden;
 }
 
 .EmailPreviewShort .from {
-    flex-grow: 2;
-    text-align: right;
+    width: 10%;
+    text-align: center;
 }
 
 .EmailPreviewShort .subj {
     font-family: roboto-regular, sans-serif;
     text-align: left;
+    padding-right: 10px;
 }
 
-.EmailPreview {
-    display: flex;
-    flex-direction: column;
+/* gold btn:--------- */
+
+.fa-star {
+    color: var(--emailYellow);
 }
+
+.readBtn {
+    padding: 0px 10px;
+}
+
+/* --------------------------------DETAILS------------------------------ */
 
 .EmailDetails {
-    background-color: rgb(241, 237, 237);
+
+    background-color: #f5f5f5;
+    padding: 20px;
 }
+
+/* position: absolute; */
+
+
 
 .EmailDetails .emailAddress {
     color: rgb(109, 109, 109);
+    font-family: roboto-thin;
 }
 
-.unRead .EmailPreviewShort {
+.unRead.EmailPreviewShort {
     font-weight: bold;
-    background-color: rgb(114, 113, 113);
+    background-color: #d1d1d1;
 }
+
+.EmailDetails p {
+    font-family: roboto-light, sans-serif;
+}
+
+.emailDitBtns {
+    text-align: end;
+    /* position: relative;
+    bottom: 20px;
+    right: 20px; */
+}
+
+.fa-mail-reply:before, .fa-reply:before {
+    content:none;
+}
+
+.emailDitBtns *> {
+    height: 40px;
+}
+
+/*----------------------- REPLAY FORM:-------------------------- */
 
 .reply {
-    background-color: rgb(241, 123, 123);
+    width: 100%;
+    border-top: 1px solid var(--darkgray);
+    padding: 10px;
+}
+
+.EmailUserReply {
+    background-color: var(--emailYellow);
+    padding: 15px;
+    margin: 10px;
+}
+
+.grid-form {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: auto;
+    row-gap: 20px;
+    grid-template-areas: "title  subj subj" "body  body btn"
+}
+
+.EmailUserReply input, .EmailUserReply textarea {
+    border: 1px solid var(--emailYellow);
+    color: var(--emailYellow);
+    width: 40vw;
+    height: 30px;
+}
+
+.reply-subj {
+    grid-area: subj;
+    width: 60px;
+}
+
+.reply-body {
+    grid-area: body;
+}
+
+.EmailUserReply button {
+    grid-area: btn;
+    height: 30px;
+    align-self: center;
+}
+
+.EmailUserReply h1 {
+    color: var(--darkgray);
+    font-family: roboto-medium;
+    grid-area: title;
+    align-self: center;
+}
+
+.EmailUserReply label {
+    font-family: roboto-light;
+}
+
+/* ----------------email compose------------------- */
+
+.EmailCompose {
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    background-color: #fff;
 }

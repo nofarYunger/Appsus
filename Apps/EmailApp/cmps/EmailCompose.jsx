@@ -39,12 +39,12 @@ export class EmailCompose extends React.Component {
     render() {
         const { email } = this.state
         return (
-            <form onSubmit={this.addEmail}>
+            <form className="EmailCompose" onSubmit={this.addEmail}>
                 <h1>New Message:</h1>
                 <label > Subject:<input type="text" name="subject" placeholder="Subject" value={email.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
                 <label > From:<input type="text" name="from" placeholder="Me" value={email.from} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
                 <label > To:<input type="text" placeholder="You" value="You" /></label>
-                <label >Message: <textarea name="body" cols="30" rows="10" value={email.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
+                <label >Message: <textarea name="body" cols="10" rows="30" value={email.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
                 <button type="submit">Submit</button>
             </form>
         )

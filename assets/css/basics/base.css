@@ -17,7 +17,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ------------ ROBOTO -------------- */
+/* ------------ fonts -------------- */
 
 @font-face {
     font-family: roboto-thin;
@@ -39,11 +39,17 @@
     src: url('../../fonts/Roboto/Roboto-Medium.ttf');
 }
 
+@font-face {
+    font-family: sofia;
+    src: url('../../fonts/Sofia/Sofia-Regular.ttf');
+}
+
 /* ------------------------------------------ */
 
 :root {
     --blue: #4885ed;
     --yellow: #f5f5689d;
+    --emailYellow: rgb(248 187 47);
     --darkblue: rgba(4, 22, 36, 0.871);
     --darkgray: #202124;
     --gray: #F5F7F7;
@@ -71,8 +77,9 @@ body {
     align-items: center;
 }
 
-input, select {
+input, select, textarea {
     cursor: pointer;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-family: roboto-light, sans-serif;
     box-shadow: none;
@@ -85,9 +92,63 @@ input:focus, select:focus {
     font-family: roboto-regular, sans-serif;
 }
 
-/* i {
-    font-size: 1.5rem;
-    color: var(--darkblue);
+/* ---------------------------- FILTER:------------------------------- */
+
+.filter input {
+    box-shadow: none;
+    border: 1px solid rgb(233, 232, 232);
+    width: 40vw;
+    height: 30px;
+    border-radius: 40px;
+}
+
+.filter input:focus {
+    border: none;
+    background-color: rgb(233, 232, 232);
+    font-family: roboto-regular, sans-serif;
+    width: 40vw;
+    height: 30px;
+}
+
+.filter .fa-search {
+    color: rgb(233, 232, 232);
+    height: 30px;
+}
+
+/* ----------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.emailBtn {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid var(--darkgray);
+    border-radius: 30px;
+    color: var(--darkgray);
+}
+
+input {
+    border-radius: 10px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.emailBtn:hover {
+    background-color: #fff;
+    color: var(--emailYellow);
+    transition: all 0.3s;
+}
+
+button:focus, textarea:focus, input:focus {
+    outline: none;
+}
+
+.EmailApp i:hover {
+    color: var(--emailYellow);
+}
+
+i {
+    transition: all 0.3s;
     cursor: pointer;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-} */
+    padding: 10px;
+}

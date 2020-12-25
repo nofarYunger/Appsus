@@ -1,13 +1,3 @@
-import { UtilService } from "../../../services/UtilService.js"
-import { NoteService } from "../services/NoteService.js"
-import { EventBusService } from '../../../services/EventBusService.js'
-import { NoteBar } from '../../NoteApp/cmps/NoteBar.jsx'
-
-
-
-// var img = { id: UtilService.makeId(), isPinned: false, type: 'NoteImg', info: { url: '', title: '' }, style: '' }
-// var todos = { id: UtilService.makeId(), isPinned: false, type: 'NoteTodos', info: { id: UtilService.makeId(), txt: '', doneAt: 0 }, style: '.' }
-
 export class NoteAdd extends React.Component {
     state = {
         note: { type: "NoteText", info: {} },
@@ -34,7 +24,7 @@ export class NoteAdd extends React.Component {
         var name = ev.target.name
         const noteCopy = { ...this.state.note };
         noteCopy.info[name] = value
-        console.log(noteCopy);
+
         // like petCopy.name/power = 
         this.setState({
             note: noteCopy

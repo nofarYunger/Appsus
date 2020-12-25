@@ -1,6 +1,13 @@
 .AppHeader {
     font-family: sans-serif;
     background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    height: 80px;
 }
 
 .AppHeader ul {
@@ -23,6 +30,8 @@
 }
 
 .AppHeader h1 {
-    color: var(--darkgray);
+    color: rgb(189 193 198);
     margin: 0;
+    font-size: 40px;
+    font-family: sofia, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
