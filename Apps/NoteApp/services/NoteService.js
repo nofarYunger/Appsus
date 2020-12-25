@@ -4,7 +4,8 @@ import { StorageService } from '../../../services/StorageService.js'
 export const NoteService = {
     query,
     save,
-    remove
+    remove,
+    getById
 }
 var gNotes;
 const KEY = 'notesDB'
@@ -19,6 +20,8 @@ function _createNotes() {
     }
 }
 function save(note) {
+    console.log('gNotes', gNotes);
+    if (!note) return Promise.resolve()
     if (note.id) {
         return _update(note);
     } else {
@@ -27,9 +30,13 @@ function save(note) {
 }
 
 function _add(note) {
+    console.log('add');
     const noteToAdd = {
         id: UtilService.makeId(),
         isPinned: false,
+        style: {
+            backgroundColor: "#f5f5689d"
+        },
         ...note
     };
 
@@ -39,6 +46,8 @@ function _add(note) {
 }
 
 function _update(note) {
+    console.log('update');
+
     const noteToUpdate = {
         ...note
     };
@@ -57,10 +66,10 @@ function remove(noteId) {
     return Promise.resolve();
 }
 
-// function getById(noteId) {
-//     const note = gNotes.find(note => note.id === noteId);
-//     return Promise.resolve(note);
-// }
+function getById(noteId) {
+    const note = gNotes.find(note => note.id === noteId);
+    return Promise.resolve(note);
+}
 function query() {
     return Promise.resolve(gNotes)
 }
@@ -77,7 +86,7 @@ function _getDemoNotes() {
 
             },
             style: {
-                backgroundColor: "#"
+                backgroundColor: "#f5f5689d"
             }
         },
         {

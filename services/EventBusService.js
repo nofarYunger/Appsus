@@ -17,3 +17,4 @@ function emit(eventName, data) {
 
 
 export const EventBusService = { on, emit };
+//EventBuseService.on("event",() =>{} )

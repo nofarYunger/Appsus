@@ -4,6 +4,7 @@ export class NoteFilter extends React.Component {
     }
 
     handleChange = (ev) => {
+        console.log('filter');
         const callback = () => {
             this.props.setFilter(this.state.filterBy);
         };
@@ -16,9 +17,9 @@ export class NoteFilter extends React.Component {
         return <div className="NoteFilter">Filter <input name="txt" type="text" placeholder="Search" onChange={this.handleChange} />
             <select name="type" onChange={this.handleChange}>
                 <option value=''>All</option>
-                <option value='Img'>Img</option>
-                <option value='Text'>Text</option>
-                <option value='Todos'>Todos</option>
+                <option value='NoteImg'>Img</option>
+                <option value='NoteText'>Text</option>
+                <option value='NoteTodos'>Todos</option>
             </select></div>
     }
 }

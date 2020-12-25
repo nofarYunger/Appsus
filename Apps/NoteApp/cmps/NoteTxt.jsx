@@ -4,7 +4,6 @@ export function NoteTxt({ note }) {
         <div className="NoteTxt flex">
             <i className="fas fa-file-alt"></i>
             {note.info.txt}
-
         </div>
 
     </section>
