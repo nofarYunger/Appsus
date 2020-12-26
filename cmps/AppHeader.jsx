@@ -12,7 +12,7 @@ export class _AppHeader extends React.Component {
     }
 
 
-
+    // refUl = React.createRef();
 
     componentDidUpdate(prevProps, prevState) {
 
@@ -21,6 +21,10 @@ export class _AppHeader extends React.Component {
         if (prevState.pathname === pathname) return
         this.setState({ pathname })
     }
+    // menuOpen = () => {
+    //     console.log('hi');
+    //     this.refUl.current.className = "apps-uldis"
+    // }
 
 
     render() {
@@ -35,18 +39,19 @@ export class _AppHeader extends React.Component {
                     <h1 className="logo">Appsus</h1> </span>
 
 
-                {pathname === '/Email' && <EmailFilter />}
-                {pathname === '/Note' && <NoteFilter />}
 
-                <ul>
-                    <NavLink to={'/Note'}><li><i className="far fa-lightbulb"></i></li></NavLink>
+                {/* {/* <div onClick={this.menuOpen} className={"apps"}><i className="fas fa-th"></i></div> */}
+                <ul ref={this.refUl} className="apps-uldis">
+
+                    <NavLink to={'/Note'}><li><i class="far fa-sticky-note"></i></li></NavLink>
                     <NavLink to={'/Email'}><li><i className="far fa-envelope"></i></li></NavLink>
                     <NavLink to={'/Book'}> <li><i className="fas fa-book"></i></li></NavLink>
-                    {/* <NavLink to={'/'}><li><i className="fas fa-th"></i></li></NavLink> */}
+                    <li>{pathname === '/Email' && <EmailFilter />} {pathname === '/Note' && <NoteFilter />}</li>
+
                 </ul>
             </header>
 
-        </section>
+        </section >
         )
     }
 

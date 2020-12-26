@@ -18,6 +18,7 @@ export class NoteFilter extends React.Component {
                 <option value='NoteImg'>Img</option>
                 <option value='NoteText'>Text</option>
                 <option value='NoteTodos'>Todos</option>
+                <option value='NoteVideo'>Video</option>
             </select></div>
     }
 }

@@ -7,6 +7,7 @@ import { EmailCompose } from './Apps/EmailApp/cmps/EmailCompose.jsx';
 import { BookApp } from './Apps/BookApp/BookApp.jsx';
 import { ReviewAdd } from './Apps/BookApp/cmps/BookAddReview.jsx';
 import { BookDetails } from './Apps/BookApp/cmps/BookDetails.jsx';
+import { Home } from './Pages/Home.jsx';
 
 
 
@@ -23,6 +24,7 @@ export class App extends React.Component {
 
                     <AppHeader />
                     <Switch>
+
                         <Route path="/book/info/:bookId/editReview" component={ReviewAdd} />
                         <Route path="/book/info/:bookId" component={BookDetails} />
                         <Route path="/BooK" component={BookApp} />
@@ -31,7 +33,7 @@ export class App extends React.Component {
                         <Route path="/Email/Compose" component={EmailCompose} />
                         <Route path="/Email" component={EmailApp} />
                         {/* <Route path="/About" component={About} /> */}
-                        {/* <Route path="/" component={Home} /> */}
+                        <Route path="/" component={Home} />
                     </Switch>
 
                 </section>

@@ -3,9 +3,9 @@ export class Home extends React.Component {
 
     render() {
         return (
-            <Router>
-               
-            </Router>
+
+            <div className="flex-col sus">Welcome to Apsus <img src="../assets/imgs/logo.png" alt="" /></div>
+
         );
     }
 }

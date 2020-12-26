@@ -4,4 +4,7 @@
     height: 100%;
     z-index: -1;
     left: 0;
+    padding: 15px;
+    top: 80px;
+    width: 17%;
 }

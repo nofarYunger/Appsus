@@ -1,4 +1,4 @@
-import { StorageService } from '../../../StorageService.js'
+import { StorageService } from '../../../services/StorageService.js'
 
 export const BookAddService = {
     query,
@@ -26,7 +26,7 @@ function findOpt(key) {
 
 
 function _getBooksFromGoogle() {
-     gGoogleBooks = StorageService.load(GOOGLE_KEY)
+    gGoogleBooks = StorageService.load(GOOGLE_KEY)
     if (!gGoogleBooks) {
         const url = 'https://www.googleapis.com/books/v1/volumes?printType=books&q=effective%20javascript'
         axios.get(url)

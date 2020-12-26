@@ -56,7 +56,7 @@ export class EmailDetails extends React.Component {
                 </div>}
                 <div className="emailDitBtns" >
                     <span onClick={(ev) => this.deleteEmail(ev)}><i className="fas fa-trash"></i></span>
-                    <span onClick={(ev) => this.openReplyBox(ev)}><i className="fas fa-reply"></i></span>
+                    <span onClick={(ev) => this.openReplyBox(ev)}><i className="fa fa-reply" aria="disabled"></i></span>
                 </div>
                 {isReplyBoxOpen && <EmailUserReply email={email} callback={this.addReply} />}
             </div>

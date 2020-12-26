@@ -6,14 +6,15 @@ export function EmailSideBar({ callback }) {
 
 
     return (
-        <aside className="EmailSideBar">
+        <section>
+            <aside className="EmailSideBar">
 
-          
-            <Link to='/Email/Compose'>
-                <div className="emailBtn">Compose New Email </div>
-            </Link>
-            <EmailSort onSort={callback} />
-        </aside>
+
+                <Link to='/Email/Compose'>
+                    <div className="emailBtn"><i className="fas fa-envelope"></i> </div>
+                </Link>
+                <EmailSort onSort={callback} />
+            </aside></section>
     )
 
 

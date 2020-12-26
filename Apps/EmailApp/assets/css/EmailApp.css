@@ -10,15 +10,9 @@
     margin: 0px 10px;
 }
 
-.EmailSideBar {
-    width: 20%;
-    top: 80px;
-}
-
 .EmailList {
     top: 80px;
     width: 80%;
     right: 0;
     position: absolute;
 }
-

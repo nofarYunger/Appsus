@@ -59,7 +59,9 @@ body {
     font-family: roboto-regular, sans-serif;
     font-size: 20px;
     color: var(--blue);
-    background-color: rgb(233, 232, 232);
+    background-color: white;
+    height: 100vh;
+    /* background-color: rgb(233, 232, 232); */
     margin: 0;
 }
 
@@ -123,9 +125,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .emailBtn {
     background-color: rgba(255, 255, 255, 0);
-    border: 1px solid var(--darkgray);
+    /* border: 1px solid var(--darkgray); */
     border-radius: 30px;
     color: var(--darkgray);
+    width: fit-content;
 }
 
 input {
@@ -155,4 +158,12 @@ i {
 
 a {
     text-decoration: none;
+}
+
+.sus {
+    font-size: 3em;
+    padding-top: 150px;
+    font-family: sans-serif;
+    color: #8dc5fa;
+    text-shadow: 1px 1px 2px#919191;
 }

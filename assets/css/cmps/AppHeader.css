@@ -8,6 +8,8 @@
     right: 0;
     left: 0;
     height: 80px;
+    color: #8dc5fa;
+    /* text-shadow: 1px 1px 2px#919191; */
 }
 
 .AppHeader ul {
@@ -23,6 +25,13 @@
 .AppHeader i {
     color: var(--darkgray);
     font-size: 30px;
+    padding: 10px;
+    color: #E7443C;
+}
+
+.AppHeader .apps li :hover {
+    background-color: rgb(248 187 47);
+    border-radius: 50%;
 }
 
 .AppHeader img {
@@ -33,5 +42,35 @@
     color: rgb(189 193 198);
     margin: 0;
     font-size: 40px;
-    font-family: sofia, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* font-family: sofia, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
+.apps-uldis li:last-child {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 900px) {
+    .apps {
+        display: block;
+    }
+    .apps-uldis {
+        transform: translate(0, 78px);
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        justify-content: center;
+        background-color: #e7443c;
+        align-items: center;
+        right: 0px;
+        padding: 10px;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 100%;
+        position: fixed;
+    }
+    .AppHeader i {
+        color: #F5F7F7;
+    }
+    .NoteAdd {
+        padding-top: 200px;
+    }
 }

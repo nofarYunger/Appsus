@@ -41,10 +41,9 @@ export class EmailUserReply extends React.Component {
 
             <div className="EmailUserReply" >
                 <form className="grid-form" onSubmit={this.addReply} >
-                    <h1>Your reply</h1>
-                    <label className="reply-subj flex-row" > Subject:<input type="text" name="subject" placeholder="Subject" value={reply.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
-                    <label className="reply-body" >Message: <textarea name="body" value={reply.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea></label>
-                    <button className="emailBtn" type="submit">Submit</button>
+                    <label className="reply-subj flex-row" > Subject:<input target="subject" type="text" name="subject" placeholder="Subject" value={reply.subject} onChange={(ev) => this.onChangeInput(ev.target)} /></label>
+                    <label className="reply-body" >Message:</label> <textarea className="emailText" wrap="off" rows="50" cols="50" name="body" value={reply.body} onChange={(ev) => this.onChangeInput(ev.target)} placeholder="enter your message here..."></textarea>
+                    <button className="emailBtn" type="submit">Send</button>
                 </form>
             </div>
         );

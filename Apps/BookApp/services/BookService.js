@@ -1,4 +1,4 @@
-import { StorageService } from '../../../StorageService.js'
+import { StorageService } from '../../../services/StorageService.js'
 import { UtilService } from '../../../services/UtilService.js'
 
 const KEY = 'booksDB'
