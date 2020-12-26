@@ -15,10 +15,13 @@
     column-width: 350px;
     column-gap: 10px;
     padding-top: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
     text-align: center;
 }
 
 .NoteAdd {
+    /* cursor: pointer; */
     padding-top: 80px;
     flex-direction: row;
     display: flex;
@@ -44,20 +47,28 @@
     margin-top: 10px;
     border: none;
     background-color: white;
+    align-self: flex-end;
+    padding-right: 40px;
+    /* padding-bottom: 20px; */
+    position: relative;
+    bottom: 50px;
+    cursor: pointer;
 }
 
 .NoteAdd button i:hover {
     border: none;
-    background-color: rgb(248 187 47);
+    background-color: #8dc5fa;
     border-radius: 60%;
     color: white;
 }
 
-.NoteAdd button i {
+.NoteAdd a {
     border-radius: 50%;
     cursor: pointer;
     border: none;
     background-color: white;
+    align-self: start;
+    padding-left: 40px;
 }
 
 .NoteAdd input, select, textarea {
@@ -133,7 +144,6 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    align-self: baseline;
     margin: 0;
 }
 
@@ -152,6 +162,7 @@
 .NoteAdd form i, a {
     color: #8dc5fa;
     cursor: pointer;
+    font-size: 1.5em;
     /* padding-top: 30px; */
 }
 

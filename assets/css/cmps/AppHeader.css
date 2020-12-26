@@ -22,6 +22,12 @@
     padding-right: 10px;
 }
 
+.AppHeader li>* {
+    float: right;
+    padding-right: 200px;
+    padding-top: 10px;
+}
+
 .AppHeader i {
     color: var(--darkgray);
     font-size: 30px;
@@ -76,5 +82,8 @@
     }
     .NoteAdd {
         padding-top: 200px;
+    }
+    .NoteAdd form {
+        width: 80%;
     }
 }

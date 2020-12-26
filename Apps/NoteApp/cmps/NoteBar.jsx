@@ -44,15 +44,16 @@ export class NoteBar extends React.Component {
         const { style } = this.props.note;
         const { onRemove } = this.props;
         return (<ul className="note-bar " >
+            <li className="pin" onClick={() => this.onCheck()}><i className="fas fa-thumbtack" ref={this.refPin}></i></li>
             <li onClick={() => { onRemove(id) }}><i className="fas fa-trash"></i></li>
-            <li onClick={() => this.onCheck()}><i className="fas fa-thumbtack" ref={this.refPin}></i></li>
             <li> <input name="backgroundColor" onChange={(event) => this.handleChangeStyle(event)} value={style} className="color-pallete" type="color" list="presets" />
                 <datalist id="presets">
                     <option value="#cccccc">Grey</option>
                     <option value="#dda0dd">White</option>
                     <option value="#6699cc">Blue</option>
-                    <option value="#dd1f68de">pink</option>
-                    <option value="#a2ec9c">green</option>
+                    <option value="#dd1f68de">Pink</option>
+                    <option value="#a2ec9c">Green</option>
+                    <option value="#f9f9a2">Yellow</option>
                 </datalist><i className="fas fa-palette">
                 </i>
             </li>

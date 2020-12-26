@@ -1,8 +1,8 @@
 import { EmailFilter } from "../Apps/EmailApp/cmps/EmailFilter.jsx";
 import { NoteFilter } from "../Apps/NoteApp/cmps/NoteFilter.jsx";
+import { BookFilter } from "../Apps/BookApp/cmps/BookFilter.jsx";
 
 const { NavLink, withRouter } = ReactRouterDOM;
-
 
 
 export class _AppHeader extends React.Component {
@@ -46,7 +46,7 @@ export class _AppHeader extends React.Component {
                     <NavLink to={'/Note'}><li><i class="far fa-sticky-note"></i></li></NavLink>
                     <NavLink to={'/Email'}><li><i className="far fa-envelope"></i></li></NavLink>
                     <NavLink to={'/Book'}> <li><i className="fas fa-book"></i></li></NavLink>
-                    <li>{pathname === '/Email' && <EmailFilter />} {pathname === '/Note' && <NoteFilter />}</li>
+                    <li>{pathname === '/Email' && <EmailFilter />} {pathname === '/Note' && <NoteFilter />}{pathname === '/Book' && <BookFilter />}</li>
 
                 </ul>
             </header>

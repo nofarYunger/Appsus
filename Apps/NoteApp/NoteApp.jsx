@@ -26,7 +26,7 @@ export class NoteApp extends React.Component {
     onAdd = (note) => {
         NoteService.save(note)
             .then(() => this.loadNotes())
-       
+
     }
     componentWillUnmount() {
         this.unsubscribe();
@@ -51,11 +51,12 @@ export class NoteApp extends React.Component {
         const { filterBy, notes } = this.state;
         if (!notes) return null
         notes.sort(function (x, y) {
-            return (x.isPinned === y.isPinned) ? 0 : x ? -1 : 1;
+            return (x.isPinned === y.isPinned) ? 0 : x.isPinned ? -1 : 1;
         });
         const filterRegex = new RegExp(filterBy.txt, 'i');
         const filterType = filterBy.type
-        if (!filterType) return notes.filter(note => filterRegex.test(note.type));
+        if (!filterType) return notes.filter(note =>
+            filterRegex.test(note.type) || filterRegex.test(note.info.txt) || filterRegex.test(note.info.label));
         return notes.filter(note => (filterRegex.test(note.type) && note.type === filterType));
 
     }

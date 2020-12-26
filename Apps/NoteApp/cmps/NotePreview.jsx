@@ -19,8 +19,8 @@ export function NotePreview({ note, onRemove }) {
     }
     return (
         <div className="NotePreview card" style={{ backgroundColor: bColor }} >
-            <DynamicCmp />
             <NoteBar note={note} onRemove={onRemove} />
+            <DynamicCmp />
         </div >
     )
 }

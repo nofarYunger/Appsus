@@ -86,7 +86,7 @@ function _getDemoNotes() {
 
             },
             style: {
-                backgroundColor: "#f5f5689d"
+                backgroundColor: ""
             }
         },
         {

@@ -26,11 +26,12 @@ export class NoteAdd extends React.Component {
 
     }
     onReset = () => {
+        this.refForm.current.reset()
         this.setState({
             note: {
                 type: "NoteText", info: {},
-            }, currView: "NoteText", isEdit: false
-
+            },
+            currView: "NoteText", isEdit: false
         });
 
     }
