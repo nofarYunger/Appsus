@@ -1,7 +1,7 @@
 .AppHeader {
-    font-family: sans-serif;
+    font-family: just;
     background-color: #fff;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
     position: fixed;
     z-index: 2;
@@ -41,7 +41,10 @@
 .AppHeader h1 {
     color: rgb(189 193 198);
     margin: 0;
-    font-size: 40px;
+    font-size: 60px;
+    color: #e7443c;
+    position: relative;
+    top: -5px;
     /* font-family: sofia, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 
@@ -62,6 +65,7 @@
         background-color: #e7443c;
         align-items: center;
         right: 0px;
+        padding-top: 0;
         padding: 10px;
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
         width: 100%;

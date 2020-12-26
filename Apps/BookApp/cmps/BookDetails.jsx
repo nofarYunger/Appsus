@@ -75,17 +75,23 @@ export class BookDetails extends React.Component {
         if (!book) return null
         return (
             <div className={`book-modal`}  >
-                <img src={book.thumbnail} alt="" />
-                <h1>{book.title}</h1>
-                <h2>{book.subtitle}</h2>
-                <h3>Authors:{book.authors}</h3>
-                <p>Published Date: {book.publishedDate}</p>
-                <p>pageCount: {book.pageCount} type: {this.bookPageCount()}</p>
-                <h3 className={this.getPriceClass()}> {this.getPrice()}</h3>
-                { book.listPrice.isOnSale && <img className={'sale-icon'} src="https://cdn4.iconfinder.com/data/icons/color-webshop/512/sale_shopping_online_sell-512.png" alt="" />}
+                <div className="flex-book"> <img src={book.thumbnail} alt="" />
+                    <div className="bookInfo"> <h1>{book.title}</h1>
+                        <h2>{book.subtitle}</h2>
+                        <h3>Authors:{book.authors}</h3>
+                        <p>Published Date: {book.publishedDate}</p>
+                        <p>pageCount: {book.pageCount} type: {this.bookPageCount()}</p>
+                        <h3 className={this.getPriceClass()}> {this.getPrice()}</h3>
+                        {book.listPrice.isOnSale && <img className={'sale-icon'} src="https://cdn4.iconfinder.com/data/icons/color-webshop/512/sale_shopping_online_sell-512.png" alt="" />}
+                    </div>
+                </div>
+
+                {book.reviews && <h1>Reviews:</h1>}
                 {book.reviews && this.printReviews()}
-                <Link to={`/book`}> <button>X</button></Link>
-                <Link to={`/book/info/${book.id}/editReview`}>Edit Review</Link>
+                <div className="details-btn">
+                <Link to={`/book`}> <button className="btn-yellow" ><i class="fas fa-times"></i></button></Link>
+                <Link to={`/book/info/${book.id}/editReview`}><button className="btn-yellow" >Edit Review</button></Link>
+                </div>
             </div>
         );
     }

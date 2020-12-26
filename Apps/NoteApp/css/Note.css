@@ -12,8 +12,8 @@
 .note-list {
     margin: 0 auto;
     columns: 3;
-    column-width: auto;
-    column-gap: 50px;
+    column-width: 350px;
+    column-gap: 10px;
     padding-top: 60px;
     text-align: center;
 }

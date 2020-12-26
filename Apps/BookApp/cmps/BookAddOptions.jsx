@@ -5,7 +5,7 @@ export function BookAddOption({ options, callBack }) {
     function getOptForDisplay() {
         console.log(options);
         return options.map(option => {
-            return <li key={option.volumeInfo.id} >{option.volumeInfo.title} {<button onClick={() => callBack(option)}>add</button>}</li>
+            return <li key={option.volumeInfo.id} >{<button className="addBookBtn" onClick={() => callBack(option)}><i class="fas fa-plus"></i></button>} {option.volumeInfo.title} </li>
         })
     }
 

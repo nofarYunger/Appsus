@@ -55,12 +55,11 @@ export class ReviewAdd extends React.Component {
         const review = this.state.review
         return (
             <form className="form-box" onSubmit={this.saveReview}>
-                <textarea name="" id="" cols="30" rows="10" name="txt" value={review.txt} onChange={this.onInputChange}></textarea >
+                <h1>Add Review</h1>
+                <label>Whats your name?</label><input type="text" placeholder='Full Name' name="fullName" value={review.fullName} onChange={this.onInputChange} />
+                <label >Read at:</label><input type="date" value={review.readAt} name="readAt" onChange={this.onInputChange} />
 
-                <input type="text" placeholder='Full Name' name="fullName" value={review.fullName} onChange={this.onInputChange} />
-                <input type="date" value={review.readAt} name="readAt" onChange={this.onInputChange} />
-
-                <select id="rate" name="rate" value={review.rate} name="rate" onChange={this.onInputChange}>
+                <label id="rate" >Rate: </label><select id="rate" name="rate" className="rev-rate" value={review.rate} name="rate" onChange={this.onInputChange}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -68,7 +67,9 @@ export class ReviewAdd extends React.Component {
                     <option value="5">5</option>
 
                 </select>
-                <button>Submit Review</button>
+                <label id="rev">Add your review: </label>
+                <textarea  id="rev" name="txt" value={review.txt} onChange={this.onInputChange}></textarea >
+                <button className="emailBtn">Submit Review</button>
             </form>
         )
     }

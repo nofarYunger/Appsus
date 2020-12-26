@@ -6,8 +6,6 @@ export function NoteTodos({ note }) {
         <i className="fas fa-list"></i>
         <div>{note.info.label}</div>
         <ul className="flex">{todosmap}</ul>
-
-
     </div>)
 }
 

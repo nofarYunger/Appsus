@@ -1,4 +1,4 @@
-import { EventBusService } from "../../../services/EventBusService..js"
+import { EventBusService } from "../../../services/EventBusService.js"
 
 
 export class NoteAdd extends React.Component {
@@ -6,6 +6,8 @@ export class NoteAdd extends React.Component {
         note: { type: "NoteText", info: {} },
         currView: 'NoteText'
     }
+
+    // 
     onSubmit = (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
@@ -14,8 +16,11 @@ export class NoteAdd extends React.Component {
         this.refForm.current.reset()
         this.setState({
             note: {
-                type: "NoteText", info: {},
-            }, currView: "NoteText", isEdit: false
+                type: "NoteText",
+                info: {},
+            },
+            currView: "NoteText",
+            isEdit: false
 
         });
 
@@ -34,14 +39,20 @@ export class NoteAdd extends React.Component {
             if (!note) return
             console.log('edit');
             this.setState({ note, currView: note.type, isEdit: true })
-
         });
-
     }
+
+    componentDidUnMount() {
+        this.unsubscribe()
+    }
+
+
     onInputChange = (ev) => {
         ev.preventDefault()
         var value = ev.target.value;
         var name = ev.target.name
+        console.log('name:', name);
+        console.log('val:', value);
         const noteCopy = { ...this.state.note };
         if (name.includes('Todo')) {
             var id = ev.target.id
@@ -101,7 +112,12 @@ export class NoteAdd extends React.Component {
             </section>)
     }
 }
+
+
+
+
 function DynamicCmp({ onInputChange, note, currView, isEdit }) {
+    console.log("note", note);
     var currView = currView
     switch (currView) {
         case 'NoteText': return <NoteTxtForm isEdit={isEdit} note={note} onInputChange={onInputChange} />

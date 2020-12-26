@@ -2,7 +2,8 @@ import { EmailList } from './cmps/EmailList.jsx'
 import { EventBusService } from '../../services/EventBusService.js'
 import { EmailSideBar } from './cmps/EmailSideBar.jsx'
 import { EmailService } from './services/EmailService.js'
-// import { EmailFilter } from './cmps/EmailFilter.jsx'
+
+
 export class EmailApp extends React.Component {
 
 

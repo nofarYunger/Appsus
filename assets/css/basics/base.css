@@ -44,6 +44,11 @@
     src: url('../../fonts/Sofia/Sofia-Regular.ttf');
 }
 
+@font-face {
+    font-family: just;
+    src: url('../../fonts/Just_Me_Again_Down_Here/JustMeAgainDownHere-Regular.ttf');
+}
+
 /* ------------------------------------------ */
 
 :root {
@@ -58,7 +63,7 @@
 body {
     font-family: roboto-regular, sans-serif;
     font-size: 20px;
-    color: var(--blue);
+    color: var(--darkgray);
     background-color: white;
     height: 100vh;
     /* background-color: rgb(233, 232, 232); */
@@ -121,6 +126,7 @@ input:focus, select:focus {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    font-weight: unset;
 }
 
 .emailBtn {
