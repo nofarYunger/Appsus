@@ -488,7 +488,7 @@ function addBookToDB(book) {
     }
 
     var copyBooks = [...gBooks]
-    gBooks = [...copyBooks, newBook]
+    gBooks = [newBook,...copyBooks]
     StorageService.save(KEY, gBooks)
     return Promise.resolve()
 }

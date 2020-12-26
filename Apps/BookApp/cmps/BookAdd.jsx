@@ -43,7 +43,7 @@ export class BookAdd extends React.Component {
             <section className="google-search">
                 <div className="add-book-bar">
 
-                    <h1>adding a new book!</h1>
+                    <p>adding a new book!</p>
                     <input onChange={this.onInputChange} type="text" name="bookKey" placeholder="Add a new book"
                         value={this.state.key} />
                     {this.state.options.length && <div className="option-bar">

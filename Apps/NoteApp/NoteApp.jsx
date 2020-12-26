@@ -26,7 +26,7 @@ export class NoteApp extends React.Component {
     onAdd = (note) => {
         NoteService.save(note)
             .then(() => this.loadNotes())
-        // return Promise.resolve()
+       
     }
     componentWillUnmount() {
         this.unsubscribe();
@@ -65,7 +65,7 @@ export class NoteApp extends React.Component {
     render() {
         const { notes } = this.state
         const notesForDisplay = this.getNotesForDisplay();
-        if (!notes) return <div>Loadiung</div>
+        if (!notes) return <div>Loading...</div>
         return (
             <section className="NoteApp">
                 <header>

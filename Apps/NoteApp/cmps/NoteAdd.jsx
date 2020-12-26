@@ -102,7 +102,7 @@ export class NoteAdd extends React.Component {
 
 
 function DynamicCmp({ onInputChange, note, currView, isEdit }) {
-    console.log("note",note);
+    console.log("note", note);
     var currView = currView
     switch (currView) {
         case 'NoteText': return <NoteTxtForm isEdit={isEdit} note={note} onInputChange={onInputChange} />
@@ -134,8 +134,8 @@ function NoteTodosForm({ note, onInputChange, isEdit }) {
 }
 function NoteTxtForm({ note, onInputChange, isEdit }) {
     const noteInfo = note.info
-console.log(noteInfo);
-console.log(note);
+    console.log(noteInfo);
+    console.log(note);
     return (
         <React.Fragment>
             <textarea name="txt" value={isEdit ? note.txt : noteInfo.txt} type="text" placeholder="text..." onChange={(ev) => onInputChange(ev)}></textarea>
